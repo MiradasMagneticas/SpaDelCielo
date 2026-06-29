@@ -10,7 +10,7 @@
   <meta property="og:image" content="assets/06_masaje_facial.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Syne:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Syne:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -56,8 +56,8 @@
           <circle cx="54" cy="22" r="1.2" fill="#C9A227"/>
           <circle cx="36" cy="12" r="1.2" fill="#C9A227"/>
           <!-- Text -->
-          <text x="70" y="38" font-family="'Playfair Display',serif" font-size="26" fill="#1B3A5C" font-style="italic">Del Cielo</text>
-          <text x="70" y="54" font-family="'Syne',sans-serif" font-size="8.5" fill="#8A9BAD" letter-spacing="3.5">SPA &amp; ESTÉTICA</text>
+          <text x="70" y="38" font-family="'Playfair Display',serif" font-size="26" fill="#F5EFE2" font-style="italic">Del Cielo</text>
+          <text x="70" y="54" font-family="'Syne',sans-serif" font-size="8.5" fill="#C9A227" letter-spacing="3.5">SPA &amp; ESTÉTICA</text>
         </svg>
       </a>
     </div>
@@ -65,7 +65,7 @@
     <div class="header-right">
       <a href="#nosotros" class="header-nav-link">Nosotros</a>
       <a href="#ubicacion" class="header-nav-link">Ubicación</a>
-      <a href="https://agendapro.com/site/co/centrodeesteticadedelcielo/477895" target="_blank" rel="noopener" class="btn-book">Agendar cita</a>
+      <button onclick="openBooking()" class="btn-book">Agendar cita</button>
     </div>
 
     <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -78,170 +78,105 @@
     <a href="#galeria">Galería</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#ubicacion">Ubicación</a>
-    <a href="https://agendapro.com/site/co/centrodeesteticadedelcielo/477895" target="_blank" rel="noopener" class="mobile-book">Agendar cita →</a>
+    <button onclick="openBooking()" class="mobile-book">Agendar cita →</button>
   </nav>
 </header>
 
 <!-- ════════════════════════════════════════════
-     HERO
+     HERO — full-bleed blurred background + big logo
 ════════════════════════════════════════════ -->
 <section class="hero" id="inicio">
 
-  <!-- Corner botanical plants -->
-  <div class="plant plant--tl" aria-hidden="true">
-    <svg viewBox="0 0 220 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M110 410 Q105 330 100 260 Q94 180 88 110 Q83 55 90 10" stroke="#A3C5A0" stroke-width="2.5" fill="none" opacity=".5"/>
-      <path d="M100 260 Q158 232 196 192 Q165 222 115 248 Q102 254 100 260Z" fill="#A3C5A0" opacity=".52"/>
-      <path d="M96 190 Q152 162 188 128 Q158 158 110 184 Q98 190 96 190Z" fill="#7EC8DD" opacity=".38"/>
-      <path d="M94 130 Q44 104 18 68 Q42 98 86 122 Q92 126 94 130Z" fill="#A3C5A0" opacity=".48"/>
-      <path d="M92 75 Q42 52 22 24 Q46 48 85 68 Q90 72 92 75Z" fill="#A3C5A0" opacity=".38"/>
-      <path d="M90 10 Q104 -4 112 10 Q100 4 90 10Z" fill="#A3C5A0" opacity=".5"/>
-      <ellipse cx="155" cy="210" rx="30" ry="14" fill="#9FC5A0" opacity=".28" transform="rotate(-18 155 210)"/>
-      <ellipse cx="62" cy="95" rx="22" ry="10" fill="#7EC8DD" opacity=".22" transform="rotate(22 62 95)"/>
-    </svg>
+  <!-- Blurred full-width background -->
+  <div class="hero-bg" aria-hidden="true">
+    <img src="assets/06_masaje_facial.png" alt="" fetchpriority="high"/>
+    <div class="hero-bg-tint"></div>
   </div>
 
-  <div class="plant plant--tr" aria-hidden="true">
-    <svg viewBox="0 0 240 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M190 8 Q145 45 110 110 Q82 165 90 250 Q96 300 100 360" stroke="#A3C5A0" stroke-width="2.5" fill="none" opacity=".5"/>
-      <path d="M130 95 Q185 68 210 35 Q178 62 135 88 Q130 92 130 95Z" fill="#A3C5A0" opacity=".52"/>
-      <path d="M118 155 Q80 130 58 98 Q76 124 112 148 Q116 152 118 155Z" fill="#7EC8DD" opacity=".42"/>
-      <path d="M108 218 Q68 200 50 170 Q70 196 104 214 Q107 217 108 218Z" fill="#A3C5A0" opacity=".42"/>
-      <path d="M102 280 Q65 268 48 242 Q66 264 98 276 Q101 278 102 280Z" fill="#9FC5A0" opacity=".38"/>
-      <ellipse cx="168" cy="55" rx="26" ry="12" fill="#9FC5A0" opacity=".3" transform="rotate(-28 168 55)"/>
-      <ellipse cx="210" cy="22" rx="18" ry="9" fill="#7EC8DD" opacity=".25" transform="rotate(-15 210 22)"/>
-    </svg>
-  </div>
-
-  <div class="plant plant--bl" aria-hidden="true">
-    <svg viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 220 Q52 175 85 140 Q112 110 162 78 Q120 112 88 148 Q55 182 20 220Z" fill="#A3C5A0" opacity=".45"/>
-      <path d="M55 200 Q82 158 128 130 Q96 155 52 198Z" fill="#7EC8DD" opacity=".32"/>
-      <path d="M90 175 Q118 140 155 118 Q126 138 88 173Z" fill="#9FC5A0" opacity=".38"/>
-      <ellipse cx="118" cy="120" rx="28" ry="14" fill="#A3C5A0" opacity=".35" transform="rotate(22 118 120)"/>
-      <ellipse cx="165" cy="82" rx="20" ry="10" fill="#7EC8DD" opacity=".28" transform="rotate(35 165 82)"/>
-    </svg>
-  </div>
-
-  <div class="plant plant--br" aria-hidden="true">
-    <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M180 240 Q148 195 115 158 Q88 126 38 95 Q80 128 110 162 Q145 198 180 240Z" fill="#9FC5A0" opacity=".4"/>
-      <path d="M148 218 Q120 178 85 148 Q112 176 146 216Z" fill="#7EC8DD" opacity=".3"/>
-      <ellipse cx="95" cy="140" rx="26" ry="12" fill="#9FC5A0" opacity=".32" transform="rotate(-20 95 140)"/>
-      <ellipse cx="45" cy="100" rx="20" ry="10" fill="#A3C5A0" opacity=".28" transform="rotate(-35 45 100)"/>
-    </svg>
-  </div>
-
-  <!-- Scattered gold sparkles -->
+  <!-- Gold sparkles over the dark image -->
   <div class="hero-sparkles" aria-hidden="true">
     <svg viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <circle cx="320" cy="120" r="2.5" fill="#C9A227" opacity=".5"/>
-      <circle cx="480" cy="80"  r="1.5" fill="#C9A227" opacity=".4"/>
-      <circle cx="210" cy="340" r="2"   fill="#C9A227" opacity=".35"/>
-      <circle cx="860" cy="95"  r="2"   fill="#C9A227" opacity=".45"/>
-      <circle cx="980" cy="220" r="1.5" fill="#C9A227" opacity=".35"/>
-      <circle cx="1050" cy="450" r="2.5" fill="#C9A227" opacity=".3"/>
-      <circle cx="140" cy="520" r="1.8" fill="#9FC5A0" opacity=".5"/>
-      <circle cx="760" cy="580" r="2"   fill="#7EC8DD" opacity=".4"/>
-      <!-- Tiny 4-point stars -->
-      <path d="M560 65 L562 70 L567 72 L562 74 L560 79 L558 74 L553 72 L558 70Z" fill="#C9A227" opacity=".45"/>
-      <path d="M1100 160 L1101.5 164 L1106 165.5 L1101.5 167 L1100 171 L1098.5 167 L1094 165.5 L1098.5 164Z" fill="#C9A227" opacity=".35"/>
-      <path d="M90 200 L91.5 204 L96 205.5 L91.5 207 L90 211 L88.5 207 L84 205.5 L88.5 204Z" fill="#9FC5A0" opacity=".4"/>
+      <circle cx="220" cy="140" r="2.5" fill="#C9A227" opacity=".7"/>
+      <circle cx="480" cy="80"  r="1.6" fill="#E8CE7A" opacity=".6"/>
+      <circle cx="860" cy="110" r="2"   fill="#C9A227" opacity=".6"/>
+      <circle cx="1010" cy="230" r="1.6" fill="#E8CE7A" opacity=".5"/>
+      <circle cx="1060" cy="470" r="2.5" fill="#C9A227" opacity=".45"/>
+      <circle cx="150" cy="500" r="1.8" fill="#C9A227" opacity=".55"/>
+      <circle cx="760" cy="560" r="2"   fill="#E8CE7A" opacity=".5"/>
+      <path d="M560 65 L562 70 L567 72 L562 74 L560 79 L558 74 L553 72 L558 70Z" fill="#E8CE7A" opacity=".6"/>
+      <path d="M1100 160 L1101.5 164 L1106 165.5 L1101.5 167 L1100 171 L1098.5 167 L1094 165.5 L1098.5 164Z" fill="#C9A227" opacity=".5"/>
+      <path d="M120 280 L121.5 284 L126 285.5 L121.5 287 L120 291 L118.5 287 L114 285.5 L118.5 284Z" fill="#E8CE7A" opacity=".55"/>
     </svg>
   </div>
 
-  <!-- Main content -->
-  <div class="hero-inner">
-    <!-- Left: editorial text block -->
-    <div class="hero-left">
-      <!-- Lotus mark only (no text) -->
-      <div class="hero-mark">
-        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
-          <ellipse cx="30" cy="38" rx="8" ry="20" fill="#7EC8DD" opacity=".9"/>
-          <ellipse cx="30" cy="38" rx="8" ry="20" fill="#7EC8DD" opacity=".7" transform="rotate(-36 30 48)"/>
-          <ellipse cx="30" cy="38" rx="8" ry="20" fill="#7EC8DD" opacity=".7" transform="rotate(36 30 48)"/>
-          <ellipse cx="30" cy="38" rx="6" ry="16" fill="#7EC8DD" opacity=".45" transform="rotate(-68 30 48)"/>
-          <ellipse cx="30" cy="38" rx="6" ry="16" fill="#7EC8DD" opacity=".45" transform="rotate(68 30 48)"/>
-          <path d="M16 24 Q30 10 44 24 Q38 16 30 16 Q22 16 16 24Z" fill="#C9A227"/>
-          <circle cx="12" cy="20" r="2" fill="#C9A227"/>
-          <circle cx="48" cy="18" r="1.4" fill="#C9A227"/>
-          <circle cx="30" cy="8"  r="1.6" fill="#C9A227"/>
-        </svg>
-      </div>
-
-      <!-- The name — huge, italic -->
-      <h1 class="hero-name">Del Cielo</h1>
-
-      <!-- Type + location -->
-      <div class="hero-type">
-        <span>Spa &amp; Estética</span>
-        <span class="hero-type-sep">·</span>
-        <span>Cota, Cundinamarca</span>
-      </div>
-
-      <!-- Thin gold ornament line -->
-      <div class="hero-ornament" aria-hidden="true">
-        <svg viewBox="0 0 280 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="6" x2="118" y2="6" stroke="#C9A227" stroke-width="0.8" opacity=".5"/>
-          <circle cx="130" cy="6" r="2.5" fill="#C9A227" opacity=".65"/>
-          <circle cx="140" cy="6" r="1.5" fill="#C9A227" opacity=".5"/>
-          <circle cx="148" cy="6" r="1"   fill="#C9A227" opacity=".4"/>
-          <line x1="162" y1="6" x2="280" y2="6" stroke="#C9A227" stroke-width="0.8" opacity=".5"/>
-        </svg>
-      </div>
-
-      <!-- Tagline -->
-      <p class="hero-tagline">
-        No vienes solo a verte bien&hellip;<br/>
-        <em>vienes a desconectarte.</em>
-      </p>
-
-      <!-- CTAs -->
-      <div class="hero-actions">
-        <a href="https://agendapro.com/site/co/centrodeesteticadedelcielo/477895" target="_blank" rel="noopener" class="btn-primary">
-          Agendar cita
-        </a>
-        <a href="https://wa.me/573229265662?text=Hola%20Del%20Cielo%20Spa%20%F0%9F%8C%99%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener" class="btn-wa">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
-      </div>
-
-      <!-- Stats — subtle, secondary -->
-      <div class="hero-stats">
-        <div class="hstat">
-          <span class="hstat-num">7+</span>
-          <span class="hstat-label">Categorías</span>
-        </div>
-        <div class="hstat-divider"></div>
-        <div class="hstat">
-          <span class="hstat-num">100+</span>
-          <span class="hstat-label">Tratamientos</span>
-        </div>
-        <div class="hstat-divider"></div>
-        <div class="hstat">
-          <span class="hstat-num">5★</span>
-          <span class="hstat-label">Atención</span>
-        </div>
-      </div>
+  <!-- Centered content -->
+  <div class="hero-content">
+    <!-- Big lotus logo mark -->
+    <div class="hero-mark">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="104" height="104">
+        <ellipse cx="60" cy="76" rx="15" ry="38" fill="#7EC8DD" opacity=".92"/>
+        <ellipse cx="60" cy="76" rx="15" ry="38" fill="#7EC8DD" opacity=".72" transform="rotate(-34 60 92)"/>
+        <ellipse cx="60" cy="76" rx="15" ry="38" fill="#7EC8DD" opacity=".72" transform="rotate(34 60 92)"/>
+        <ellipse cx="60" cy="76" rx="12" ry="30" fill="#7EC8DD" opacity=".48" transform="rotate(-64 60 92)"/>
+        <ellipse cx="60" cy="76" rx="12" ry="30" fill="#7EC8DD" opacity=".48" transform="rotate(64 60 92)"/>
+        <path d="M30 46 Q60 18 90 46 Q76 30 60 30 Q44 30 30 46Z" fill="#C9A227"/>
+        <circle cx="22" cy="38" r="3" fill="#E8CE7A"/>
+        <circle cx="98" cy="34" r="2.2" fill="#E8CE7A"/>
+        <circle cx="60" cy="14" r="2.6" fill="#E8CE7A"/>
+      </svg>
     </div>
 
-    <!-- Right: single elegant photo -->
-    <div class="hero-right">
-      <div class="hero-photo-frame">
-        <div class="hero-photo-inner">
-          <img src="assets/06_masaje_facial.png" alt="Tratamiento facial en Del Cielo Spa" loading="eager"/>
-        </div>
-        <!-- Corner accent lines -->
-        <div class="hero-photo-corner hero-photo-corner--tl"></div>
-        <div class="hero-photo-corner hero-photo-corner--br"></div>
-        <!-- Badge -->
-        <div class="hps-badge">
-          <div class="pill-dot"></div>
-          <span>Abiertos hoy</span>
-        </div>
+    <h1 class="hero-name">Del Cielo</h1>
+    <div class="hero-type">Spa &amp; Estética · Cota, Cundinamarca</div>
+
+    <div class="hero-ornament" aria-hidden="true">
+      <svg viewBox="0 0 320 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="7" x2="138" y2="7" stroke="#C9A227" stroke-width="1" opacity=".7"/>
+        <circle cx="152" cy="7" r="3" fill="#C9A227"/>
+        <circle cx="164" cy="7" r="1.8" fill="#C9A227" opacity=".7"/>
+        <circle cx="174" cy="7" r="1.1" fill="#C9A227" opacity=".5"/>
+        <line x1="182" y1="7" x2="320" y2="7" stroke="#C9A227" stroke-width="1" opacity=".7"/>
+      </svg>
+    </div>
+
+    <p class="hero-tagline">
+      No vienes solo a verte bien&hellip;<br/>
+      <em>vienes a desconectarte.</em>
+    </p>
+
+    <div class="hero-actions">
+      <button onclick="openBooking()" class="btn-primary">
+        <span>Agendar cita</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <a href="https://wa.me/573229265662?text=Hola%20Del%20Cielo%20Spa%20%F0%9F%8C%99%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener" class="btn-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-num">7+</span>
+        <span class="hstat-label">Categorías</span>
+      </div>
+      <div class="hstat-divider"></div>
+      <div class="hstat">
+        <span class="hstat-num">100+</span>
+        <span class="hstat-label">Tratamientos</span>
+      </div>
+      <div class="hstat-divider"></div>
+      <div class="hstat">
+        <span class="hstat-num">5★</span>
+        <span class="hstat-label">Atención</span>
       </div>
     </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Descubre más</span>
+    <div class="hero-scroll-line"></div>
   </div>
 </section>
 
@@ -256,14 +191,11 @@
   <!-- Plant decorations -->
   <div class="deco-plant deco-plant--svc-r" aria-hidden="true">
     <svg viewBox="0 0 160 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Monstera-style large leaf -->
       <path d="M130 10 Q160 60 140 130 Q120 180 80 210 Q100 160 115 110 Q125 65 130 10Z" fill="#9FC5A0" opacity=".38"/>
       <path d="M80 210 Q55 240 40 280 Q65 250 82 214Z" fill="#9FC5A0" opacity=".3"/>
-      <!-- Leaf splits -->
       <path d="M120 80 Q95 75 80 90" stroke="#7EC8DD" stroke-width="1.5" fill="none" opacity=".4"/>
       <path d="M115 115 Q88 108 72 125" stroke="#7EC8DD" stroke-width="1.2" fill="none" opacity=".35"/>
       <path d="M105 150 Q80 145 65 162" stroke="#9FC5A0" stroke-width="1" fill="none" opacity=".35"/>
-      <!-- Small leaf -->
       <ellipse cx="155" cy="60" rx="20" ry="10" fill="#9FC5A0" opacity=".28" transform="rotate(-35 155 60)"/>
     </svg>
   </div>
@@ -371,7 +303,7 @@
             <li><span>Baby Light + Olaplex</span><span>$330.000</span></li>
             <li><span>Base color</span><span>$190.000</span></li>
           </ul>
-          <button onclick="openBooking('Balayage','$390.000','180 min')" class="mini-link">Agendar</button>
+          <button onclick="openBooking('Balayage','$390.000','180 min')" class="mini-link">Agendar →</button>
         </div>
       </div>
 
@@ -387,7 +319,7 @@
             <li><span>Manicura semi perm.</span><span>$55.000</span></li>
             <li><span>Pedispa</span><span>$80.000</span></li>
           </ul>
-          <button onclick="openBooking('Manicura semipermanente','$55.000','45 min')" class="mini-link">Agendar</button>
+          <button onclick="openBooking('Manicura semipermanente','$55.000','45 min')" class="mini-link">Agendar →</button>
         </div>
       </div>
 
@@ -403,7 +335,7 @@
             <li><span>Ritual de barba</span><span>$45.000</span></li>
             <li><span>Skin Sir Fausto</span><span>$80.000</span></li>
           </ul>
-          <button onclick="openBooking('Corte de caballero','$35.000','45 min')" class="mini-link">Agendar</button>
+          <button onclick="openBooking('Corte de caballero','$35.000','45 min')" class="mini-link">Agendar →</button>
         </div>
       </div>
 
@@ -419,7 +351,7 @@
             <li><span>Sauna (35 min)</span><span>$70.000</span></li>
             <li><span>Reserva Spa (3h)</span><span>$390.000</span></li>
           </ul>
-          <button onclick="openBooking('Jacuzzi (60 min)','$150.000','60 min')" class="mini-link">Agendar</button>
+          <button onclick="openBooking('Jacuzzi (60 min)','$150.000','60 min')" class="mini-link">Agendar →</button>
         </div>
       </div>
     </div>
@@ -447,25 +379,25 @@
 
     <!-- Planes & Bonos -->
     <div class="planes-strip reveal">
-      <div class="plan-chip" onclick="openBooking('Paquete Entre Nubes','$320.000','110 min')" style="cursor:pointer">
+      <div class="plan-chip" onclick="openBooking('Paquete Entre Nubes','$320.000','110 min')">
         <div class="plan-chip-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="currentColor" stroke="none"/></svg>
         </div>
         <div><strong>Paquete Entre Nubes</strong><br/><small>110 min · $320.000</small></div>
       </div>
-      <div class="plan-chip" onclick="openBooking('Plan de Parejas','A consultar','120 min')" style="cursor:pointer">
+      <div class="plan-chip" onclick="openBooking('Plan de Parejas','A consultar','120 min')">
         <div class="plan-chip-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" fill="currentColor" stroke="none"/></svg>
         </div>
         <div><strong>Plan de Parejas</strong><br/><small>Jacuzzi + masaje · Ver precio</small></div>
       </div>
-      <div class="plan-chip" onclick="openBooking('Bono Padres','$280.000','135 min')" style="cursor:pointer">
+      <div class="plan-chip" onclick="openBooking('Bono Padres','$280.000','135 min')">
         <div class="plan-chip-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="1.5" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke="#C9A227"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <div><strong>Bono Padres</strong><br/><small>135 min · $280.000</small></div>
       </div>
-      <div class="plan-chip" onclick="openBooking('Bono Regalo Del Cielo','A elegir','')" style="cursor:pointer">
+      <div class="plan-chip" onclick="openBooking('Bono Regalo Del Cielo','A elegir','')">
         <div class="plan-chip-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
         </div>
@@ -481,14 +413,11 @@
   </div>
 </section>
 
-<!-- reservar section removed — booking is now handled by the modal -->
-
 <!-- ════════════════════════════════════════════
      GALERÍA
 ════════════════════════════════════════════ -->
 <section class="galeria-section" id="galeria">
   <div class="galeria-blob" aria-hidden="true"></div>
-  <!-- Trailing branch top-right -->
   <div class="deco-plant deco-plant--gal-tr" aria-hidden="true">
     <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M200 0 Q155 20 120 55 Q90 85 80 130 Q95 90 125 60 Q158 28 200 8Z" fill="#9FC5A0" opacity=".32"/>
@@ -548,12 +477,6 @@
       Ver más en @delcielo.spa
     </a>
   </div>
-
-  <div class="wave-divider wave-galeria">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,60 C240,20 480,80 720,45 C960,10 1200,70 1440,60 L1440,80 L0,80 Z" fill="#FAF6F0"/>
-    </svg>
-  </div>
 </section>
 
 <!-- ════════════════════════════════════════════
@@ -561,12 +484,10 @@
 ════════════════════════════════════════════ -->
 <section class="nosotros-section" id="nosotros">
   <div class="nosotros-blob" aria-hidden="true"></div>
-  <!-- Botanical left edge -->
   <div class="deco-plant deco-plant--nos-l" aria-hidden="true">
     <svg viewBox="0 0 120 320" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 320 Q30 260 50 190 Q65 130 55 60 Q45 130 30 195 Q12 265 0 320Z" fill="#9FC5A0" opacity=".3"/>
       <path d="M55 60 Q20 45 5 20 Q25 40 55 58Z" fill="#9FC5A0" opacity=".35"/>
-      <!-- Leaves off stem -->
       <path d="M42 170 Q10 155 0 130 Q15 148 40 168Z" fill="#7EC8DD" opacity=".3"/>
       <path d="M35 230 Q5 220 0 198 Q12 215 34 228Z" fill="#9FC5A0" opacity=".28"/>
       <ellipse cx="60" cy="90" rx="22" ry="10" fill="#9FC5A0" opacity=".28" transform="rotate(15 60 90)"/>
@@ -603,16 +524,11 @@
             Atención de lunes a domingo, con y sin cita previa
           </div>
         </div>
-        <a href="https://agendapro.com/site/co/centrodeesteticadedelcielo/477895" target="_blank" rel="noopener" class="btn-primary">Conoce nuestros servicios</a>
+        <button onclick="openBooking()" class="btn-primary">Agendar mi cita</button>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ════════════════════════════════════════════
-     CLIENTES FELICES — placeholder
-════════════════════════════════════════════ -->
-<!-- TODO: activar cuando el usuario provea reseñas/testimonios -->
 
 <!-- ════════════════════════════════════════════
      UBICACIÓN
@@ -634,8 +550,8 @@
           </div>
           <div>
             <h4>Dirección</h4>
-            <p>Calle 11 1-00, Local 4<br/>C.C. Pueblo Viejo, Cota</p>
-            <a href="https://maps.google.com/?q=Centro+Comercial+Pueblo+Viejo+Cota+Cundinamarca" target="_blank" rel="noopener" class="ubi-link">Cómo llegar →</a>
+            <p>Del Cielo Spa & Estética<br/>Cota, Cundinamarca</p>
+            <a href="https://www.google.com/maps/place/DEL+CIELO+SPA+Y+ESTETICA/@4.8034093,-74.0975972,17z" target="_blank" rel="noopener" class="ubi-link">Cómo llegar →</a>
           </div>
         </div>
 
@@ -646,9 +562,9 @@
           <div>
             <h4>Horario</h4>
             <div class="horario-rows">
-              <div class="h-row"><span>Lun — Vie</span><span>7:00 – 7:00 pm</span></div>
-              <div class="h-row"><span>Sábados</span><span>8:00 – 7:00 pm</span></div>
-              <div class="h-row"><span>Dom & Festivos</span><span>9:00 – 5:00 pm</span></div>
+              <div class="h-row"><span>Lun — Vie</span><span>7:00 am – 7:00 pm</span></div>
+              <div class="h-row"><span>Sábados</span><span>8:00 am – 7:00 pm</span></div>
+              <div class="h-row"><span>Dom & Festivos</span><span>9:00 am – 5:00 pm</span></div>
             </div>
           </div>
         </div>
@@ -669,12 +585,12 @@
         </button>
       </div>
 
-      <!-- Google Maps embed right -->
+      <!-- Google Maps embed (satellite) right -->
       <div class="ubicacion-map reveal">
         <iframe
-          src="https://maps.google.com/maps?q=Centro+Comercial+Pueblo+Viejo,+Cota,+Cundinamarca,+Colombia&t=k&z=17&ie=UTF8&iwloc=&output=embed"
+          src="https://maps.google.com/maps?q=4.8034093,-74.0975972&t=k&z=18&ie=UTF8&iwloc=&output=embed"
           width="100%" height="100%"
-          style="border:0; border-radius:20px; min-height:420px;"
+          style="border:0; min-height:480px;"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -690,7 +606,6 @@
      FOOTER
 ════════════════════════════════════════════ -->
 <footer class="site-footer">
-  <!-- Botanical corner plants -->
   <div class="deco-plant deco-plant--footer-l" aria-hidden="true">
     <svg viewBox="0 0 100 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 180 Q25 130 40 80 Q50 40 45 0 Q38 38 25 78 Q8 130 0 180Z" fill="#9FC5A0" opacity=".18"/>
@@ -705,11 +620,6 @@
       <path d="M70 130 Q95 120 100 100 Q90 115 70 128Z" fill="#9FC5A0" opacity=".18"/>
     </svg>
   </div>
-  <div class="footer-wave">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,20 1440,30 L1440,60 L0,60 Z" fill="#0D1C2E"/>
-    </svg>
-  </div>
   <div class="footer-bg" aria-hidden="true"></div>
   <div class="footer-inner container">
     <div class="footer-brand">
@@ -717,11 +627,11 @@
         <ellipse cx="36" cy="38" rx="6" ry="16" fill="#7EC8DD" opacity=".8"/>
         <ellipse cx="36" cy="38" rx="6" ry="16" fill="#7EC8DD" opacity=".65" transform="rotate(-38 36 48)"/>
         <ellipse cx="36" cy="38" rx="6" ry="16" fill="#7EC8DD" opacity=".65" transform="rotate(38 36 48)"/>
-        <path d="M21 28 Q36 14 51 28 Q44 20 36 20 Q28 20 21 28Z" fill="#C9A227" opacity=".8"/>
-        <circle cx="18" cy="24" r="1.8" fill="#C9A227" opacity=".7"/>
-        <circle cx="54" cy="22" r="1.2" fill="#C9A227" opacity=".7"/>
-        <text x="70" y="38" font-family="'Playfair Display',serif" font-size="26" fill="rgba(255,255,255,.75)" font-style="italic">Del Cielo</text>
-        <text x="70" y="54" font-family="'Syne',sans-serif" font-size="8.5" fill="rgba(255,255,255,.3)" letter-spacing="3.5">SPA &amp; ESTÉTICA</text>
+        <path d="M21 28 Q36 14 51 28 Q44 20 36 20 Q28 20 21 28Z" fill="#C9A227" opacity=".9"/>
+        <circle cx="18" cy="24" r="1.8" fill="#C9A227" opacity=".8"/>
+        <circle cx="54" cy="22" r="1.2" fill="#C9A227" opacity=".8"/>
+        <text x="70" y="38" font-family="'Playfair Display',serif" font-size="26" fill="rgba(255,255,255,.85)" font-style="italic">Del Cielo</text>
+        <text x="70" y="54" font-family="'Syne',sans-serif" font-size="8.5" fill="#C9A227" letter-spacing="3.5">SPA &amp; ESTÉTICA</text>
       </svg>
       <p class="footer-tagline"><em>"No vienes solo a verte bien...<br/>vienes a desconectarte."</em></p>
     </div>
@@ -736,11 +646,11 @@
     </div>
     <div class="footer-col">
       <h5>Contacto</h5>
-      <p>Calle 11 1-00, Local 4<br/>C.C. Pueblo Viejo, Cota</p>
+      <p>Cota, Cundinamarca<br/>Colombia</p>
       <a href="tel:+573229265662">322 926 5662</a>
       <a href="https://wa.me/573229265662" target="_blank" rel="noopener">WhatsApp</a>
       <a href="https://www.instagram.com/delcielo.spa/" target="_blank" rel="noopener">@delcielo.spa</a>
-      <a href="https://agendapro.com/site/co/centrodeesteticadedelcielo/477895" target="_blank" rel="noopener">Agendar en línea</a>
+      <button onclick="openBooking()" class="footer-book-link">Agendar cita →</button>
     </div>
   </div>
   <div class="footer-bottom">
@@ -751,173 +661,180 @@
 <!-- WhatsApp flotante -->
 <a href="https://wa.me/573229265662?text=Hola%20Del%20Cielo%20Spa%20%F0%9F%8C%99%2C%20quiero%20agendar%20una%20cita"
    target="_blank" rel="noopener" class="wa-float" aria-label="Escribir por WhatsApp">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
+  <span class="wa-float-pulse"></span>
 </a>
 
-<!-- ════ BOOKING MODAL ════ -->
+<!-- ════════════════════════════════════════════
+     BOOKING MODAL
+════════════════════════════════════════════ -->
 <div class="bk-overlay" id="bk-overlay" onclick="closeBooking()" aria-hidden="true"></div>
 <div class="bk-modal" id="bk-modal" role="dialog" aria-modal="true" aria-label="Reservar cita">
   <button class="bk-close" onclick="closeBooking()" aria-label="Cerrar">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
 
-  <!-- Header -->
-  <div class="bk-header">
-    <div class="bk-logo-mark">
-      <svg viewBox="0 0 36 36" fill="none" width="28" height="28">
-        <ellipse cx="18" cy="22" rx="5" ry="12" fill="#7EC8DD" opacity=".9"/>
-        <ellipse cx="18" cy="22" rx="5" ry="12" fill="#7EC8DD" opacity=".7" transform="rotate(-36 18 28)"/>
-        <ellipse cx="18" cy="22" rx="5" ry="12" fill="#7EC8DD" opacity=".7" transform="rotate(36 18 28)"/>
-        <path d="M9 14 Q18 6 27 14 Q23 9 18 9 Q13 9 9 14Z" fill="#C9A227"/>
-      </svg>
+  <div class="bk-scroll">
+    <!-- Header -->
+    <div class="bk-header">
+      <div class="bk-logo-mark">
+        <svg viewBox="0 0 60 60" fill="none" width="40" height="40">
+          <ellipse cx="30" cy="38" rx="7" ry="18" fill="#7EC8DD" opacity=".9"/>
+          <ellipse cx="30" cy="38" rx="7" ry="18" fill="#7EC8DD" opacity=".7" transform="rotate(-34 30 47)"/>
+          <ellipse cx="30" cy="38" rx="7" ry="18" fill="#7EC8DD" opacity=".7" transform="rotate(34 30 47)"/>
+          <path d="M15 24 Q30 9 45 24 Q38 15 30 15 Q22 15 15 24Z" fill="#C9A227"/>
+          <circle cx="11" cy="20" r="1.8" fill="#E8CE7A"/>
+          <circle cx="49" cy="18" r="1.3" fill="#E8CE7A"/>
+        </svg>
+      </div>
+      <div>
+        <h2 class="bk-title">Reserva tu cita</h2>
+        <p class="bk-subtitle">Del Cielo · Spa & Estética</p>
+      </div>
     </div>
-    <div>
-      <h2 class="bk-title">Reserva tu cita</h2>
-      <p class="bk-subtitle">Del Cielo Spa & Estética</p>
+
+    <!-- Service display -->
+    <div class="bk-service-box" id="bk-service-box">
+      <div class="bk-service-info">
+        <span class="bk-svc-name" id="bk-svc-name">Selecciona un servicio</span>
+        <span class="bk-svc-price" id="bk-svc-price"></span>
+      </div>
+      <button class="bk-change-svc" id="bk-change-svc-btn" onclick="toggleServicePicker()" style="display:none">Cambiar</button>
     </div>
-  </div>
 
-  <!-- Service display -->
-  <div class="bk-service-box" id="bk-service-box">
-    <div class="bk-service-info">
-      <span class="bk-svc-name" id="bk-svc-name">Selecciona un servicio</span>
-      <span class="bk-svc-price" id="bk-svc-price"></span>
-      <span class="bk-svc-dur" id="bk-svc-dur"></span>
+    <!-- Service picker -->
+    <div class="bk-svc-picker" id="bk-svc-picker">
+      <select id="bk-svc-select" onchange="selectService(this.value)">
+        <option value="">— Elige un servicio —</option>
+        <optgroup label="Spa & Masajes">
+          <option value="Masaje relajante completo|$140.000|60 min">Masaje relajante completo — $140.000</option>
+          <option value="Drenaje linfático|$150.000|60 min">Drenaje linfático — $150.000</option>
+          <option value="Masaje deportivo|$170.000|60 min">Masaje deportivo — $170.000</option>
+          <option value="Masaje prenatal|$150.000|60 min">Masaje prenatal — $150.000</option>
+          <option value="Jacuzzi (60 min)|$150.000|60 min">Jacuzzi (60 min) — $150.000</option>
+          <option value="Sauna (35 min)|$70.000|35 min">Sauna (35 min) — $70.000</option>
+          <option value="Reserva Spa (3h)|$390.000|3h">Reserva Spa (3h) — $390.000</option>
+        </optgroup>
+        <optgroup label="Faciales">
+          <option value="Limpieza facial profunda|$170.000|75 min">Limpieza facial profunda — $170.000</option>
+          <option value="Limpieza facial sencilla|$130.000|60 min">Limpieza facial sencilla — $130.000</option>
+          <option value="Hidratación facial|$120.000|60 min">Hidratación facial — $120.000</option>
+          <option value="Yoga facial|$120.000|45 min">Yoga facial — $120.000</option>
+        </optgroup>
+        <optgroup label="Cuidado Capilar">
+          <option value="Keratina vegana|$380.000|120 min">Keratina vegana — $380.000</option>
+          <option value="Tratamiento Olaplex|$180.000|90 min">Tratamiento Olaplex — $180.000</option>
+          <option value="Fusio Dose Kérastase|$130.000|45 min">Fusio Dose Kérastase — $130.000</option>
+          <option value="Mascarilla Kérastase|$95.000|30 min">Mascarilla Kérastase — $95.000</option>
+        </optgroup>
+        <optgroup label="Peluquería">
+          <option value="Balayage|$390.000|180 min">Balayage — $390.000</option>
+          <option value="Baby Light + Olaplex|$330.000|150 min">Baby Light + Olaplex — $330.000</option>
+          <option value="Base color|$190.000|90 min">Base color — $190.000</option>
+          <option value="Corte dama|$35.000|45 min">Corte dama — $35.000</option>
+        </optgroup>
+        <optgroup label="Manicura & Pedicura">
+          <option value="PolyGel / Soft Gel|$180.000|90 min">PolyGel / Soft Gel — $180.000</option>
+          <option value="Manicura semipermanente|$55.000|45 min">Manicura semipermanente — $55.000</option>
+          <option value="Pedicura semipermanente|$65.000|45 min">Pedicura semipermanente — $65.000</option>
+          <option value="Pedispa|$80.000|60 min">Pedispa — $80.000</option>
+        </optgroup>
+        <optgroup label="Barbería">
+          <option value="Corte de caballero|$35.000|45 min">Corte de caballero — $35.000</option>
+          <option value="Ritual de barba|$45.000|45 min">Ritual de barba — $45.000</option>
+          <option value="Skin Sir Fausto|$80.000|60 min">Skin Sir Fausto — $80.000</option>
+        </optgroup>
+        <optgroup label="Depilación">
+          <option value="Depilación pierna completa|$65.000|45 min">Depilación pierna completa — $65.000</option>
+          <option value="Depilación bikini|$60.000|30 min">Depilación bikini — $60.000</option>
+          <option value="Depilación cara completa|$80.000|30 min">Depilación cara completa — $80.000</option>
+          <option value="Depilación axilas|$22.000|15 min">Depilación axilas — $22.000</option>
+          <option value="Depilación cejas|$22.000|15 min">Depilación cejas — $22.000</option>
+        </optgroup>
+        <optgroup label="Planes & Bonos">
+          <option value="Paquete Entre Nubes|$320.000|110 min">Paquete Entre Nubes — $320.000</option>
+          <option value="Bono Padres|$280.000|135 min">Bono Padres — $280.000</option>
+          <option value="Plan de Parejas|A consultar|120 min">Plan de Parejas</option>
+        </optgroup>
+      </select>
     </div>
-    <button class="bk-change-svc" id="bk-change-svc-btn" onclick="toggleServicePicker()">Cambiar</button>
-  </div>
 
-  <!-- Service picker (hidden by default) -->
-  <div class="bk-svc-picker" id="bk-svc-picker" style="display:none">
-    <select id="bk-svc-select" onchange="selectService(this.value)">
-      <option value="">— Elige un servicio —</option>
-      <optgroup label="Spa & Masajes">
-        <option value="Masaje relajante completo|$140.000|60 min">Masaje relajante completo — $140.000</option>
-        <option value="Drenaje linfático|$150.000|60 min">Drenaje linfático — $150.000</option>
-        <option value="Masaje deportivo|$170.000|60 min">Masaje deportivo — $170.000</option>
-        <option value="Masaje prenatal|$150.000|60 min">Masaje prenatal — $150.000</option>
-        <option value="Jacuzzi (60 min)|$150.000|60 min">Jacuzzi (60 min) — $150.000</option>
-        <option value="Sauna (35 min)|$70.000|35 min">Sauna (35 min) — $70.000</option>
-        <option value="Reserva Spa (3h)|$390.000|3h">Reserva Spa (3h) — $390.000</option>
-      </optgroup>
-      <optgroup label="Faciales">
-        <option value="Limpieza facial profunda|$170.000|75 min">Limpieza facial profunda — $170.000</option>
-        <option value="Limpieza facial sencilla|$130.000|60 min">Limpieza facial sencilla — $130.000</option>
-        <option value="Hidratación facial|$120.000|60 min">Hidratación facial — $120.000</option>
-        <option value="Yoga facial|$120.000|45 min">Yoga facial — $120.000</option>
-      </optgroup>
-      <optgroup label="Cuidado Capilar">
-        <option value="Keratina vegana|$380.000|120 min">Keratina vegana — $380.000</option>
-        <option value="Tratamiento Olaplex|$180.000|90 min">Tratamiento Olaplex — $180.000</option>
-        <option value="Fusio Dose Kérastase|$130.000|45 min">Fusio Dose Kérastase — $130.000</option>
-        <option value="Mascarilla Kérastase|$95.000|30 min">Mascarilla Kérastase — $95.000</option>
-      </optgroup>
-      <optgroup label="Peluquería">
-        <option value="Balayage|$390.000|180 min">Balayage — $390.000</option>
-        <option value="Baby Light + Olaplex|$330.000|150 min">Baby Light + Olaplex — $330.000</option>
-        <option value="Base color|$190.000|90 min">Base color — $190.000</option>
-        <option value="Corte dama|$35.000|45 min">Corte dama — $35.000</option>
-      </optgroup>
-      <optgroup label="Manicura & Pedicura">
-        <option value="PolyGel / Soft Gel|$180.000|90 min">PolyGel / Soft Gel — $180.000</option>
-        <option value="Manicura semipermanente|$55.000|45 min">Manicura semipermanente — $55.000</option>
-        <option value="Pedicura semipermanente|$65.000|45 min">Pedicura semipermanente — $65.000</option>
-        <option value="Pedispa|$80.000|60 min">Pedispa — $80.000</option>
-      </optgroup>
-      <optgroup label="Barbería">
-        <option value="Corte de caballero|$35.000|45 min">Corte de caballero — $35.000</option>
-        <option value="Ritual de barba|$45.000|45 min">Ritual de barba — $45.000</option>
-        <option value="Skin Sir Fausto|$80.000|60 min">Skin Sir Fausto — $80.000</option>
-      </optgroup>
-      <optgroup label="Depilación">
-        <option value="Depilación pierna completa|$65.000|45 min">Depilación pierna completa — $65.000</option>
-        <option value="Depilación bikini|$60.000|30 min">Depilación bikini — $30.000</option>
-        <option value="Depilación cara completa|$80.000|30 min">Depilación cara completa — $80.000</option>
-        <option value="Depilación axilas|$22.000|15 min">Depilación axilas — $22.000</option>
-        <option value="Depilación cejas|$22.000|15 min">Depilación cejas — $22.000</option>
-      </optgroup>
-      <optgroup label="Planes">
-        <option value="Paquete Entre Nubes|$320.000|110 min">Paquete Entre Nubes — $320.000</option>
-        <option value="Bono Padres|$280.000|135 min">Bono Padres — $280.000</option>
-        <option value="Plan de Parejas|A consultar|120 min">Plan de Parejas</option>
-      </optgroup>
-    </select>
-  </div>
-
-  <!-- Staff selector -->
-  <div class="bk-section">
-    <h3 class="bk-section-title">¿Quién prefieres que te atienda?</h3>
-    <div class="bk-staff-grid" id="bk-staff-grid">
-      <label class="bk-staff-option">
-        <input type="radio" name="staff" value="Primero disponible" checked/>
-        <span class="bk-staff-card">
-          <span class="bk-staff-avatar bk-staff-avatar--any">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    <!-- Staff selector -->
+    <div class="bk-section">
+      <h3 class="bk-section-title"><span class="bk-step">1</span> ¿Quién prefieres que te atienda?</h3>
+      <div class="bk-staff-grid" id="bk-staff-grid">
+        <label class="bk-staff-option">
+          <input type="radio" name="staff" value="Primero disponible" checked/>
+          <span class="bk-staff-card">
+            <span class="bk-staff-avatar bk-staff-avatar--any">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </span>
+            <span class="bk-staff-name">Primero disponible</span>
           </span>
-          <span class="bk-staff-name">Primero disponible</span>
-        </span>
-      </label>
-      <label class="bk-staff-option">
-        <input type="radio" name="staff" value="Esmeralda Montes"/>
-        <span class="bk-staff-card">
-          <span class="bk-staff-avatar" style="background:linear-gradient(135deg,#7EC8DD,#9FC5A0)">E</span>
-          <span class="bk-staff-name">Esmeralda Montes</span>
-        </span>
-      </label>
-      <label class="bk-staff-option">
-        <input type="radio" name="staff" value="Andrea Hernandez"/>
-        <span class="bk-staff-card">
-          <span class="bk-staff-avatar" style="background:linear-gradient(135deg,#C9A227,#e8c96a)">A</span>
-          <span class="bk-staff-name">Andrea Hernandez</span>
-        </span>
-      </label>
-      <label class="bk-staff-option">
-        <input type="radio" name="staff" value="Arantza"/>
-        <span class="bk-staff-card">
-          <span class="bk-staff-avatar" style="background:linear-gradient(135deg,#9FC5A0,#7EC8DD)">A</span>
-          <span class="bk-staff-name">Arantza</span>
-        </span>
-      </label>
-      <label class="bk-staff-option">
-        <input type="radio" name="staff" value="Camilo Vargas"/>
-        <span class="bk-staff-card">
-          <span class="bk-staff-avatar" style="background:linear-gradient(135deg,#1B3A5C,#2d5a8e)">C</span>
-          <span class="bk-staff-name">Camilo Vargas</span>
-        </span>
-      </label>
+        </label>
+        <label class="bk-staff-option">
+          <input type="radio" name="staff" value="Esmeralda Montes"/>
+          <span class="bk-staff-card">
+            <span class="bk-staff-avatar" style="background:linear-gradient(135deg,#7EC8DD,#9FC5A0)">E</span>
+            <span class="bk-staff-name">Esmeralda Montes</span>
+          </span>
+        </label>
+        <label class="bk-staff-option">
+          <input type="radio" name="staff" value="Andrea Hernandez"/>
+          <span class="bk-staff-card">
+            <span class="bk-staff-avatar" style="background:linear-gradient(135deg,#C9A227,#e8c96a)">A</span>
+            <span class="bk-staff-name">Andrea Hernandez</span>
+          </span>
+        </label>
+        <label class="bk-staff-option">
+          <input type="radio" name="staff" value="Arantza"/>
+          <span class="bk-staff-card">
+            <span class="bk-staff-avatar" style="background:linear-gradient(135deg,#9FC5A0,#7EC8DD)">A</span>
+            <span class="bk-staff-name">Arantza</span>
+          </span>
+        </label>
+        <label class="bk-staff-option">
+          <input type="radio" name="staff" value="Camilo Vargas"/>
+          <span class="bk-staff-card">
+            <span class="bk-staff-avatar" style="background:linear-gradient(135deg,#2A5480,#7EC8DD)">C</span>
+            <span class="bk-staff-name">Camilo Vargas</span>
+          </span>
+        </label>
+      </div>
     </div>
-  </div>
 
-  <!-- Date picker -->
-  <div class="bk-section">
-    <h3 class="bk-section-title">¿Qué día?</h3>
-    <div class="bk-date-strip" id="bk-date-strip"></div>
-  </div>
-
-  <!-- Time slots -->
-  <div class="bk-section">
-    <h3 class="bk-section-title">¿A qué hora?</h3>
-    <div class="bk-time-tabs">
-      <button class="bk-time-tab active" onclick="showTimeSlots('morning',this)">Mañana</button>
-      <button class="bk-time-tab" onclick="showTimeSlots('afternoon',this)">Tarde</button>
+    <!-- Date picker -->
+    <div class="bk-section">
+      <h3 class="bk-section-title"><span class="bk-step">2</span> ¿Qué día?</h3>
+      <div class="bk-date-strip" id="bk-date-strip"></div>
     </div>
-    <div class="bk-slots" id="bk-slots"></div>
-    <p class="bk-warning">Las horas disponibles podrían agotarse — agenda lo antes posible.</p>
-  </div>
 
-  <!-- Name input -->
-  <div class="bk-section">
-    <h3 class="bk-section-title">Tu nombre</h3>
-    <input type="text" class="bk-name-input" id="bk-name" placeholder="¿Cómo te llamas?" autocomplete="given-name"/>
-  </div>
+    <!-- Time slots -->
+    <div class="bk-section">
+      <h3 class="bk-section-title"><span class="bk-step">3</span> ¿A qué hora?</h3>
+      <div class="bk-time-tabs">
+        <button type="button" class="bk-time-tab active" onclick="showTimeSlots('morning',this)">Mañana</button>
+        <button type="button" class="bk-time-tab" onclick="showTimeSlots('afternoon',this)">Tarde</button>
+      </div>
+      <div class="bk-slots" id="bk-slots"></div>
+      <p class="bk-warning">Las horas disponibles podrían agotarse — agenda lo antes posible.</p>
+    </div>
 
-  <!-- Submit -->
-  <button class="bk-submit" id="bk-submit" onclick="submitBooking()">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Confirmar por WhatsApp
-  </button>
+    <!-- Name input -->
+    <div class="bk-section">
+      <h3 class="bk-section-title"><span class="bk-step">4</span> Tu nombre</h3>
+      <input type="text" class="bk-name-input" id="bk-name" placeholder="¿Cómo te llamas?" autocomplete="given-name"/>
+    </div>
+
+    <!-- Submit -->
+    <button type="button" class="bk-submit" id="bk-submit" onclick="submitBooking()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Confirmar por WhatsApp
+    </button>
+    <p class="bk-foot-note">Te responderemos para confirmar disponibilidad 💛</p>
+  </div>
 </div>
 
 <!-- CDN: GSAP + ScrollTrigger -->
