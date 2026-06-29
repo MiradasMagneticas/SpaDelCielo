@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Del Cielo Spa &amp; Estética — Cota, Cundinamarca</title>
+  <meta name="description" content="Del Cielo Spa &amp; Estética en Cota, Cundinamarca. Masajes, tratamientos faciales, manicura, zonas húmedas y paquetes de bienestar. Reserva tu experiencia celestial." />
+  <meta property="og:title" content="Del Cielo Spa &amp; Estética" />
+  <meta property="og:description" content="Un respiro del cielo en Cota, Cundinamarca. Masajes, facial, manicura, paquetes de spa y más." />
+  <meta property="og:image" content="assets/img/hero.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <link rel="icon" type="image/png" href="assets/logo/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DaySpa",
+    "name": "Del Cielo Spa & Estética",
+    "description": "Espacio de bienestar, relajación y cuidado integral en Cota, Cundinamarca.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "C.C. Pueblo Viejo, Local 4",
+      "addressLocality": "Cota",
+      "addressRegion": "Cundinamarca",
+      "addressCountry": "CO"
+    },
+    "telephone": ["+573209711232", "+573229265662"],
+    "sameAs": ["https://www.instagram.com/delcielo.spa"],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "18:00" }
+    ],
+    "priceRange": "$$",
+    "currenciesAccepted": "COP"
+  }
+  </script>
+</head>
+<body class="is-loading">
+
+  <!-- ══════════════════════ LOADER ══════════════════════ -->
+  <div id="loader" role="status" aria-label="Cargando Del Cielo Spa">
+    <div class="loader-clouds" aria-hidden="true">
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice">
+        <path d="M0,140 Q150,80 300,120 Q450,160 600,100 Q750,40 900,95 Q1050,150 1200,110 L1200,200 L0,200 Z" fill="#EAF2F8" opacity="0.7"/>
+        <path d="M0,165 Q200,110 400,145 Q600,180 800,135 Q1000,90 1200,140 L1200,200 L0,200 Z" fill="#EAF2F8" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="loader-inner">
+      <img src="assets/logo/logo.png" alt="Del Cielo Spa &amp; Estética" class="loader-logo" width="200" />
+      <div class="loader-bar-track" aria-hidden="true"><div class="loader-bar" id="loader-bar"></div></div>
+      <p class="loader-hint">Preparando tu experiencia&hellip;</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════ HEADER ══════════════════════ -->
+  <header id="header" role="banner">
+    <nav class="nav-wrap" role="navigation" aria-label="Navegación principal">
+      <a href="#inicio" class="nav-logo" aria-label="Del Cielo Spa — Inicio">
+        <img src="assets/logo/logo.png" alt="Del Cielo Spa &amp; Estética" width="130" />
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="#zonas" class="nav-link">Zonas</a></li>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#paquetes" class="nav-link">Paquetes</a></li>
+        <li><a href="#historia" class="nav-link">Historia</a></li>
+        <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
+        <li><a href="#reserva" class="nav-link nav-cta">Reservar</a></li>
+      </ul>
+      <button id="hamburger" class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú" hidden>
+      <button id="mobile-close" aria-label="Cerrar menú">&times;</button>
+      <ul role="list">
+        <li><a href="#inicio" class="mobile-link">Inicio</a></li>
+        <li><a href="#zonas" class="mobile-link">Nuestras Zonas</a></li>
+        <li><a href="#servicios" class="mobile-link">Servicios</a></li>
+        <li><a href="#paquetes" class="mobile-link">Paquetes Spa</a></li>
+        <li><a href="#bonos" class="mobile-link">Bonos de Regalo</a></li>
+        <li><a href="#historia" class="mobile-link">Nuestra Historia</a></li>
+        <li><a href="#ubicacion" class="mobile-link">Ubicación</a></li>
+        <li><a href="#faq" class="mobile-link">Preguntas Frecuentes</a></li>
+        <li><a href="#reserva" class="mobile-link mobile-cta">Reservar</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ══════════════════════ HERO ══════════════════════ -->
+  <section id="inicio" class="hero" aria-label="Del Cielo Spa &amp; Estética — Bienvenidos">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="assets/img/hero.png" alt="" class="hero-img" fetchpriority="high" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">SPA &amp; ESTÉTICA &nbsp;·&nbsp; COTA, CUNDINAMARCA</span>
+      <h1 class="hero-title">Del Cielo</h1>
+      <p class="hero-tagline">Un respiro del cielo<br/>en el corazón de Cota</p>
+      <a href="#reserva" class="btn btn-hero">
+        Reservar tu experiencia
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <!-- Seagulls -->
+    <div class="hero-birds" aria-hidden="true">
+      <svg class="bird b1" viewBox="0 0 60 24"><path d="M0,12 Q15,1 30,8 Q45,1 60,12" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <svg class="bird b2" viewBox="0 0 40 16"><path d="M0,8 Q10,0 20,6 Q30,0 40,8" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      <svg class="bird b3" viewBox="0 0 50 20"><path d="M0,10 Q12,1 25,7 Q38,1 50,10" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    </div>
+    <!-- Cloud bottom transition -->
+    <div class="hero-clouds-bottom" aria-hidden="true">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,60 Q180,10 360,50 Q540,90 720,40 Q900,0 1080,38 Q1260,76 1440,45 L1440,100 L0,100 Z" fill="#FBFCFE"/>
+        <path d="M0,80 Q240,40 480,70 Q720,100 960,60 Q1200,20 1440,65 L1440,100 L0,100 Z" fill="#FBFCFE" opacity="0.6"/>
+      </svg>
+    </div>
+    <!-- Scroll cue -->
+    <div class="scroll-cue" aria-hidden="true">
+      <div class="scroll-cue-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ BIENVENIDA ══════════════════════ -->
+  <section id="bienvenida" class="section sec-bienvenida" aria-labelledby="h-bienvenida">
+    <div class="container narrow">
+      <span class="label" data-reveal="fade-up">BIENVENIDOS</span>
+      <h2 id="h-bienvenida" class="heading" data-reveal="fade-up">
+        Un espacio donde el bienestar<br/><em>toca el cielo</em>
+      </h2>
+      <p class="body-text" data-reveal="fade-up">
+        Del Cielo nació de un sueño: crear un lugar donde al cruzar la puerta, el mundo exterior quede atrás. Un espacio de serenidad, cuidado genuino y belleza consciente, en el corazón de Cota.
+      </p>
+      <p class="body-text" data-reveal="fade-up">
+        Aquí, cada detalle fue elegido con amor — la luz, los aromas, el silencio. Porque cuidarse es un acto de cariño, y todos merecen un momento que se sienta como tocar el cielo.
+      </p>
+      <div class="lotus-divider" aria-hidden="true" data-reveal="fade-up">
+        <svg viewBox="0 0 160 70" fill="none" xmlns="http://www.w3.org/2000/svg" width="160">
+          <line x1="5" y1="52" x2="55" y2="52" stroke="#C8A56A" stroke-width="0.6" opacity="0.6"/>
+          <line x1="105" y1="52" x2="155" y2="52" stroke="#C8A56A" stroke-width="0.6" opacity="0.6"/>
+          <path d="M80,52 Q70,38 60,42 Q50,46 54,56 Q62,66 80,57 Q98,66 106,56 Q110,46 100,42 Q90,38 80,52Z" stroke="#C8A56A" stroke-width="1" fill="none"/>
+          <path d="M80,52 Q75,32 65,30 Q55,28 55,44" stroke="#C8A56A" stroke-width="0.9" fill="none"/>
+          <path d="M80,52 Q85,32 95,30 Q105,28 105,44" stroke="#C8A56A" stroke-width="0.9" fill="none"/>
+          <path d="M80,52 Q77,24 70,20 Q63,16 63,36" stroke="#C8A56A" stroke-width="0.7" fill="none" opacity="0.7"/>
+          <path d="M80,52 Q83,24 90,20 Q97,16 97,36" stroke="#C8A56A" stroke-width="0.7" fill="none" opacity="0.7"/>
+          <line x1="80" y1="52" x2="80" y2="62" stroke="#C8A56A" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ HISTORIA ══════════════════════ -->
+  <section id="historia" class="section sec-historia" aria-labelledby="h-historia">
+    <div class="container">
+      <div class="historia-grid">
+        <div class="historia-media" data-reveal="clip-reveal">
+          <div class="historia-frame">
+            <!-- REEMPLAZAR con foto de Jakson Anselmi y Diego Hernández -->
+            <div class="historia-placeholder" role="img" aria-label="Foto de los fundadores — pendiente de actualizar">
+              <svg viewBox="0 0 280 380" fill="none" aria-hidden="true">
+                <rect width="280" height="380" fill="#EAF2F8"/>
+                <circle cx="140" cy="130" r="52" stroke="#C8A56A" stroke-width="1" fill="none" opacity="0.6"/>
+                <path d="M70,300 Q140,245 210,300" stroke="#C8A56A" stroke-width="1" fill="none" opacity="0.6"/>
+                <path d="M140,20 L143,30 L154,30 L145,37 L148,47 L140,41 L132,47 L135,37 L126,30 L137,30Z" stroke="#C8A56A" stroke-width="0.8" fill="none" opacity="0.5"/>
+              </svg>
+              <p>Foto de los fundadores<br/><small>— pendiente de actualizar —</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="historia-content">
+          <span class="label" data-reveal="fade-up">NUESTRA HISTORIA</span>
+          <h2 id="h-historia" class="heading" data-reveal="fade-up">
+            Un sueño hecho<br/><em>realidad</em>
+          </h2>
+          <p class="body-text" data-reveal="fade-up">
+            Del Cielo nació del sueño de <strong>Jakson Anselmi y Diego Hernández</strong>, una pareja de esposos que decidió convertir su pasión por el cuidado y la belleza en un lugar para soñar despiertos.
+          </p>
+          <p class="body-text" data-reveal="fade-up">
+            Cada rincón fue pensado con amor: la luz, los aromas, el silencio. Creemos que cuidarse es un acto de cariño profundo, y que todos merecen un momento que se sienta como tocar el cielo.
+          </p>
+          <p class="body-text" data-reveal="fade-up">
+            Esto apenas comienza, y queremos que tú seas parte de nuestra historia.
+          </p>
+          <div class="timeline" data-reveal="stagger-up">
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-body">
+                <span class="tl-label">El sueño</span>
+                <p>La visión de crear un oasis de bienestar en Cota, donde la belleza y el descanso sean uno.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-body">
+                <span class="tl-label">La apertura</span>
+                <p>Del Cielo abre sus puertas en el C.C. Pueblo Viejo, y el sueño se convierte en realidad.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-body">
+                <span class="tl-label">Hoy</span>
+                <p>Creciendo con cada cliente, cada tratamiento, cada sonrisa. La historia continúa.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ ZONAS ══════════════════════ -->
+  <section id="zonas" class="section sec-zonas" aria-labelledby="h-zonas">
+    <div class="container narrow text-center">
+      <span class="label" data-reveal="fade-up">NUESTRAS ZONAS</span>
+      <h2 id="h-zonas" class="heading" data-reveal="fade-up">
+        Un recorrido por<br/><em>tu espacio</em>
+      </h2>
+    </div>
+
+    <!-- Zona 1 -->
+    <div class="zona-row rr" data-zona="1">
+      <div class="zona-media" data-reveal="scale-up">
+        <div class="zona-frame"><img src="assets/img/hero.png" alt="Recepción del Cielo — entrada con árbol de cerezo rosa y logo iluminado" loading="lazy" /></div>
+      </div>
+      <div class="zona-text" data-reveal="stagger-up">
+        <span class="zona-num" aria-hidden="true">01</span>
+        <span class="label">BIENVENIDA</span>
+        <h3 class="zona-heading">Recepción<br/><em>&amp; Entrada</em></h3>
+        <p>El primer instante en Del Cielo: aromas suaves, luz cálida y el árbol de cerezo rosa que te dice que estás en el lugar indicado. El estrés comienza a irse desde aquí.</p>
+      </div>
+    </div>
+
+    <!-- Zona 2 -->
+    <div class="zona-row rl" data-zona="2">
+      <div class="zona-media" data-reveal="blur-up">
+        <div class="zona-frame zona-no-img" role="img" aria-label="Zona de masajes y terapias corporales">
+          <div class="zona-gradient masajes-bg"></div>
+          <div class="zona-ph-text">
+            <svg viewBox="0 0 60 60" fill="none" width="48" aria-hidden="true"><ellipse cx="30" cy="30" rx="22" ry="15" stroke="#C8A56A" stroke-width="1" opacity="0.6"/><path d="M30,15 Q30,5 25,4" stroke="#C8A56A" stroke-width="1" fill="none" opacity="0.6"/><path d="M22,22 Q10,18 8,26 Q6,34 18,34" stroke="#C8A56A" stroke-width="1" fill="none" opacity="0.6"/></svg>
+            <span>Foto próximamente</span>
+          </div>
+        </div>
+      </div>
+      <div class="zona-text" data-reveal="fade-up">
+        <span class="zona-num" aria-hidden="true">02</span>
+        <span class="label">RELAJACIÓN</span>
+        <h3 class="zona-heading">Masajes<br/><em>&amp; Terapias</em></h3>
+        <p>Masajes relajantes, descontracturantes, prenatales, deportivos y de 4 manos. Nuestros terapeutas te llevan a un estado de calma profunda y renovación total.</p>
+        <a href="#reserva" class="btn btn-outline" data-service="Masaje relajante cuerpo completo">Reservar masaje</a>
+      </div>
+    </div>
+
+    <!-- Zona 3 -->
+    <div class="zona-row rr" data-zona="3">
+      <div class="zona-media" data-reveal="rotate-in">
+        <div class="zona-frame zona-no-img" role="img" aria-label="Zona de estética facial y pestañas">
+          <div class="zona-gradient facial-bg"></div>
+          <div class="zona-ph-text">
+            <svg viewBox="0 0 60 60" fill="none" width="48" aria-hidden="true"><circle cx="30" cy="28" r="18" stroke="#C8A56A" stroke-width="1" opacity="0.6"/><path d="M22,28 Q26,22 30,24 Q34,22 38,28" stroke="#C8A56A" stroke-width="1" fill="none" opacity="0.6" stroke-linecap="round"/><path d="M25,36 Q30,41 35,36" stroke="#C8A56A" stroke-width="1" fill="none" opacity="0.6" stroke-linecap="round"/></svg>
+            <span>Foto próximamente</span>
+          </div>
+        </div>
+      </div>
+      <div class="zona-text" data-reveal="stagger-up">
+        <span class="zona-num" aria-hidden="true">03</span>
+        <span class="label">ESTÉTICA</span>
+        <h3 class="zona-heading">Facial<br/><em>&amp; Pestañas</em></h3>
+        <p>Limpiezas faciales profundas, yoga facial, hidratación, radiofrecuencia y extensión de pestañas. Tu rostro, radiante como el amanecer.</p>
+        <a href="#reserva" class="btn btn-outline" data-service="Limpieza facial profunda">Reservar facial</a>
+      </div>
+    </div>
+
+    <!-- Zona 4 -->
+    <div class="zona-row rl" data-zona="4">
+      <div class="zona-media" data-reveal="scale-up">
+        <div class="zona-frame"><img src="assets/img/zona-unas.png" alt="Zona de manicura y pedicura con sillones rosas de lujo" loading="lazy" /></div>
+      </div>
+      <div class="zona-text" data-reveal="blur-up">
+        <span class="zona-num" aria-hidden="true">04</span>
+        <span class="label">BELLEZA</span>
+        <h3 class="zona-heading">Manicura<br/><em>&amp; Pedicura</em></h3>
+        <p>Uñas perfectas en un ambiente de lujo rosé. Semipermanente, acrílicas, press on, pedispa, jelly spa y reflexología en sillones de masaje reclinables.</p>
+        <a href="#reserva" class="btn btn-outline" data-service="Pedispa">Reservar manicura</a>
+      </div>
+    </div>
+
+    <!-- Zona 5 -->
+    <div class="zona-row rr" data-zona="5">
+      <div class="zona-media" data-reveal="clip-reveal">
+        <div class="zona-frame"><img src="assets/img/zona-sauna.png" alt="Sauna de madera natural Del Cielo con tina de piedra" loading="lazy" /></div>
+      </div>
+      <div class="zona-text" data-reveal="fade-up">
+        <span class="zona-num" aria-hidden="true">05</span>
+        <span class="label">PURIFICACIÓN</span>
+        <h3 class="zona-heading">Sauna<br/><em>&amp; Baño Turco</em></h3>
+        <p>Nuestro sauna de madera natural y baño turco: el ritual perfecto para purificar cuerpo y mente, abrir los poros y preparar la piel para los tratamientos.</p>
+        <a href="#reserva" class="btn btn-outline" data-service="Sauna">Reservar sauna</a>
+      </div>
+    </div>
+
+    <!-- Zona 6 -->
+    <div class="zona-row rl" data-zona="6">
+      <div class="zona-media" data-reveal="scale-up">
+        <div class="zona-frame"><img src="assets/img/zona-jacuzzi.png" alt="Zona de jacuzzi con iluminación cinematográfica y lunas decorativas" loading="lazy" /></div>
+      </div>
+      <div class="zona-text" data-reveal="stagger-up">
+        <span class="zona-num" aria-hidden="true">06</span>
+        <span class="label">EXPERIENCIA</span>
+        <h3 class="zona-heading">Jacuzzi<br/><em>&amp; Zonas Húmedas</em></h3>
+        <p>Sumérgete en nuestra experiencia completa de zonas húmedas. El jacuzzi de lujo con decoración celestial de lunas y estrellas. El cielo al alcance de tu piel.</p>
+        <a href="#reserva" class="btn btn-outline" data-service="Jacuzzi">Reservar jacuzzi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ SERVICIOS ══════════════════════ -->
+  <section id="servicios" class="section sec-servicios" aria-labelledby="h-servicios">
+    <div class="container">
+      <span class="label text-center" data-reveal="fade-up">CATÁLOGO</span>
+      <h2 id="h-servicios" class="heading text-center" data-reveal="fade-up">Nuestros Servicios</h2>
+      <p class="body-text text-center" data-reveal="fade-up">Todos los precios en pesos colombianos (COP).</p>
+      <div class="svc-filters" id="svc-filters" role="tablist" aria-label="Filtrar por categoría" data-reveal="fade-up"></div>
+      <div class="svc-grid" id="svc-grid" role="region" aria-live="polite" aria-label="Servicios"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ PAQUETES ══════════════════════ -->
+  <section id="paquetes" class="section sec-paquetes" aria-labelledby="h-paquetes">
+    <div class="container">
+      <span class="label text-center" data-reveal="fade-up">EXPERIENCIAS COMPLETAS</span>
+      <h2 id="h-paquetes" class="heading text-center" data-reveal="fade-up">Paquetes de Spa</h2>
+      <p class="body-text text-center" data-reveal="fade-up">Rituales diseñados para llevarte directo al cielo.</p>
+
+      <!-- Spotlight -->
+      <div class="spotlight" data-reveal="scale-up">
+        <div class="spotlight-media">
+          <img src="assets/img/zona-jacuzzi.png" alt="Entre Nubes de Algodón — paquete spa completo" loading="lazy" />
+          <div class="spotlight-badge">RECOMENDADO</div>
+        </div>
+        <div class="spotlight-copy">
+          <span class="label">PAQUETE ESTRELLA</span>
+          <h3 class="zona-heading">Entre Nubes<br/><em>de Algodón</em></h3>
+          <p class="pkg-dur">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="#C8A56A" stroke-width="1"/><path d="M8 4.5V8L10.5 9.5" stroke="#C8A56A" stroke-width="1" stroke-linecap="round"/></svg>
+            2 horas 50 minutos
+          </p>
+          <ul class="pkg-list">
+            <li>Cóctel de bienvenida (mimosa o copa de vino)</li>
+            <li>Pasabocas (fresas con crema o mini tabla de quesos)</li>
+            <li>Aromaterapia &amp; Musicoterapia</li>
+            <li>Exfoliación corporal (lavanda o tropical)</li>
+            <li>Envoltura corporal</li>
+            <li>Baño turco + Jacuzzi</li>
+            <li>Masaje relajante con piedras calientes</li>
+            <li>Velo facial + Decoración especial</li>
+          </ul>
+          <div class="pkg-prices">
+            <div class="pkg-price-opt"><span class="pp-label">1 persona</span><span class="pp-val">$550.000</span></div>
+            <div class="pp-divider" aria-hidden="true"></div>
+            <div class="pkg-price-opt"><span class="pp-label">2 personas</span><span class="pp-val">$850.000</span></div>
+          </div>
+          <a href="#reserva" class="btn btn-primary" data-service="Entre Nubes de Algodón">Reservar este paquete</a>
+        </div>
+      </div>
+
+      <!-- Packages grid -->
+      <div class="pkg-grid" data-reveal="stagger-up">
+        <div class="pkg-card">
+          <h3 class="pkg-name">Entre Estrellas</h3>
+          <p class="pkg-lema">Porque juntas brillamos más</p>
+          <p class="pkg-dur"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="#C8A56A" stroke-width="1"/><path d="M8 4.5V8L10.5 9.5" stroke="#C8A56A" stroke-width="1" stroke-linecap="round"/></svg> 2h 30 min</p>
+          <ul class="pkg-list"><li>Cóctel de bienvenida</li><li>Pasabocas</li><li>Yoga facial</li><li>Jelly spa de manos</li><li>Aromaterapia &amp; Musicoterapia</li><li>Sauna o baño turco</li></ul>
+          <div class="pkg-prices-sm"><span><em>1 pers.</em> $330.000</span><span><em>2 pers.</em> $500.000</span></div>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Entre Estrellas">Reservar</a>
+        </div>
+        <div class="pkg-card">
+          <h3 class="pkg-name">Constelaciones</h3>
+          <p class="pkg-dur"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="#C8A56A" stroke-width="1"/><path d="M8 4.5V8L10.5 9.5" stroke="#C8A56A" stroke-width="1" stroke-linecap="round"/></svg> 3 horas</p>
+          <ul class="pkg-list"><li>Aromaterapia &amp; Musicoterapia</li><li>Spa de manos</li><li>Masaje capilar</li><li>Sauna turco</li><li>Masaje localizado</li><li>Bebida del cielo</li><li>Pasabocas al gusto</li></ul>
+          <div class="pkg-prices-sm"><span><em>1 pers.</em> $400.000</span><span><em>2 pers.</em> $650.000</span></div>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Constelaciones">Reservar</a>
+        </div>
+        <div class="pkg-card">
+          <h3 class="pkg-name">Paquete del Cielo</h3>
+          <p class="pkg-dur"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="#C8A56A" stroke-width="1"/><path d="M8 4.5V8L10.5 9.5" stroke="#C8A56A" stroke-width="1" stroke-linecap="round"/></svg> 3 horas</p>
+          <ul class="pkg-list"><li>Cóctel de bienvenida</li><li>Musicoterapia &amp; Aromaterapia</li><li>Pedispa</li><li>Yoga facial</li><li>Envoltura corporal</li><li>Jacuzzi</li><li>Pasabocas</li></ul>
+          <div class="pkg-prices-sm"><span><em>1 pers.</em> $470.000</span><span><em>2 pers.</em> $750.000</span></div>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Paquete del Cielo">Reservar</a>
+        </div>
+        <div class="pkg-card">
+          <h3 class="pkg-name">Paquete del Universo</h3>
+          <p class="pkg-lema">Un viaje sensorial para armonizar cuerpo, mente y espíritu</p>
+          <p class="pkg-dur"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="#C8A56A" stroke-width="1"/><path d="M8 4.5V8L10.5 9.5" stroke="#C8A56A" stroke-width="1" stroke-linecap="round"/></svg> 3 horas</p>
+          <ul class="pkg-list"><li>Aromaterapia &amp; Musicoterapia</li><li>Hidratación facial</li><li>Reflexología podal</li><li>Reflexología palmar</li><li>Sauna + Jacuzzi</li><li>Bebida del cielo</li></ul>
+          <div class="pkg-prices-sm"><span><em>1 pers.</em> $500.000</span><span><em>2 pers.</em> $750.000</span></div>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Paquete del Universo">Reservar</a>
+        </div>
+        <div class="pkg-card">
+          <h3 class="pkg-name">Húmedo Turco<br/>+ Sauna + Jacuzzi</h3>
+          <ul class="pkg-list"><li>Baño húmedo turco</li><li>Sauna</li><li>Jacuzzi</li><li>Bebida del cielo</li></ul>
+          <div class="pkg-prices-sm"><span><em>1 pers.</em> $350.000</span><span><em>2 pers.</em> $450.000</span></div>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Húmedo Turco + Sauna + Jacuzzi">Reservar</a>
+        </div>
+        <div class="pkg-card">
+          <h3 class="pkg-name">Paquete Sauna<br/>6 Sesiones</h3>
+          <p class="pkg-lema">Un ritual de bienestar semanal</p>
+          <ul class="pkg-list"><li>6 sesiones · 1 por semana</li><li>Bebida energizante después de cada sesión</li></ul>
+          <div class="pkg-prices-sm"><span class="single-price">$420.000</span></div>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Paquete Sauna 6 sesiones">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ BONOS ══════════════════════ -->
+  <section id="bonos" class="section sec-bonos" aria-labelledby="h-bonos">
+    <div class="container">
+      <span class="label text-center" data-reveal="fade-up">REGALOS ESPECIALES</span>
+      <h2 id="h-bonos" class="heading text-center" data-reveal="fade-up">Bonos de Regalo</h2>
+      <p class="body-text text-center" data-reveal="fade-up">Regala una experiencia celestial. El detalle perfecto para quien más quieres.</p>
+      <div class="bono-grid" data-reveal="stagger-up">
+        <div class="bono-card">
+          <div class="bono-icon" aria-hidden="true">
+            <svg viewBox="0 0 50 50" fill="none"><path d="M25,10 Q31,2 39,8 Q47,14 41,23 L25,42 L9,23 Q3,14 11,8 Q19,2 25,10Z" stroke="#C8A56A" stroke-width="1.5" fill="none"/></svg>
+          </div>
+          <h3 class="bono-name">Bono Tratamiento Capilar del Cielo</h3>
+          <p class="bono-dur">1 hora</p>
+          <ul class="bono-list"><li>Cóctel de bienvenida</li><li>Aromaterapia &amp; Musicoterapia</li><li>Cromoterapia e Hidroterapia</li></ul>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Bono Tratamiento Capilar del Cielo">Consultar precio</a>
+        </div>
+        <div class="bono-card">
+          <div class="bono-icon" aria-hidden="true">
+            <svg viewBox="0 0 50 50" fill="none"><path d="M25,10 Q31,2 39,8 Q47,14 41,23 L25,42 L9,23 Q3,14 11,8 Q19,2 25,10Z" stroke="#C8A56A" stroke-width="1.5" fill="none"/></svg>
+          </div>
+          <h3 class="bono-name">Bono Del Mundial — Mamá e Hija</h3>
+          <p class="bono-dur">2 horas 30 minutos</p>
+          <ul class="bono-list"><li>Aromaterapia &amp; Musicoterapia</li><li>Sauna o turco</li><li>Jacuzzi</li><li>Pinchos de fruta &amp; copa de jugo</li></ul>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Bono Del Mundial — Mamá e Hija">Consultar precio</a>
+        </div>
+        <div class="bono-card">
+          <div class="bono-icon" aria-hidden="true">
+            <svg viewBox="0 0 50 50" fill="none"><path d="M25,10 Q31,2 39,8 Q47,14 41,23 L25,42 L9,23 Q3,14 11,8 Q19,2 25,10Z" stroke="#C8A56A" stroke-width="1.5" fill="none"/></svg>
+          </div>
+          <h3 class="bono-name">Bono Copa del Cielo (Hombre)</h3>
+          <p class="bono-dur">2 horas 30 minutos</p>
+          <ul class="bono-list"><li>Skin Sir Fausto</li><li>Corte de cabello</li><li>Whisky o aguardiente</li><li>Masaje capilar</li><li>Turco o sauna · Ambiente premium</li></ul>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Bono Copa del Cielo">Consultar precio</a>
+        </div>
+        <div class="bono-card">
+          <div class="bono-icon" aria-hidden="true">
+            <svg viewBox="0 0 50 50" fill="none"><path d="M25,10 Q31,2 39,8 Q47,14 41,23 L25,42 L9,23 Q3,14 11,8 Q19,2 25,10Z" stroke="#C8A56A" stroke-width="1.5" fill="none"/></svg>
+          </div>
+          <h3 class="bono-name">Bono Mes de Padres</h3>
+          <p class="bono-dur">2 horas</p>
+          <ul class="bono-list"><li>Turco / Sauna</li><li>Corte</li><li>Pedispa &amp; Skincare</li><li>Copa de whisky</li></ul>
+          <a href="#reserva" class="btn btn-outline btn-sm" data-service="Bono Mes de Padres">Consultar precio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ RESERVA ══════════════════════ -->
+  <section id="reserva" class="section sec-reserva" aria-labelledby="h-reserva">
+    <div class="container narrow">
+      <span class="label text-center" data-reveal="fade-up">AGENDA TU VISITA</span>
+      <h2 id="h-reserva" class="heading text-center" data-reveal="fade-up">
+        Reserva tu<br/><em>experiencia celestial</em>
+      </h2>
+      <p class="body-text text-center" data-reveal="fade-up">Completa el formulario y abriremos WhatsApp con tu información lista. Sin esperas, sin complicaciones.</p>
+      <form id="reserva-form" class="rform" data-reveal="scale-up" novalidate>
+        <div class="fg">
+          <label for="f-servicio" class="flabel">Servicio o paquete *</label>
+          <div class="fselect-wrap"><select id="f-servicio" name="servicio" class="fc" required><option value="">Selecciona un servicio…</option></select></div>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label for="f-fecha" class="flabel">Fecha *</label>
+            <input type="date" id="f-fecha" name="fecha" class="fc" required />
+          </div>
+          <div class="fg">
+            <label for="f-hora" class="flabel">Hora preferida *</label>
+            <div class="fselect-wrap">
+              <select id="f-hora" name="hora" class="fc" required>
+                <option value="">Elige un horario…</option>
+                <option>9:00 am</option><option>10:00 am</option><option>11:00 am</option>
+                <option>12:00 pm</option><option>1:00 pm</option><option>2:00 pm</option>
+                <option>3:00 pm</option><option>4:00 pm</option><option>5:00 pm</option>
+                <option>6:00 pm</option><option>7:00 pm</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="fg">
+          <label for="f-nombre" class="flabel">Tu nombre *</label>
+          <input type="text" id="f-nombre" name="nombre" class="fc" placeholder="¿Cómo te llamamos?" required autocomplete="given-name" />
+        </div>
+        <div class="fg">
+          <label for="f-notas" class="flabel">Notas adicionales</label>
+          <textarea id="f-notas" name="notas" class="fc ftextarea" rows="3" placeholder="Alergias, ¿es para una ocasión especial?, preferencias…"></textarea>
+        </div>
+        <div id="form-error" class="form-error" role="alert" hidden>Por favor completa los campos requeridos: servicio, fecha y nombre.</div>
+        <button type="submit" class="btn btn-primary btn-full btn-wa">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Reservar por WhatsApp
+        </button>
+        <p class="form-note">O escríbenos directamente: <a href="https://wa.me/573143395286" target="_blank" rel="noopener noreferrer">+57 314 339 5286</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ TESTIMONIOS ══════════════════════ -->
+  <section id="testimonios" class="section sec-testimonios" aria-labelledby="h-testimonios">
+    <div class="container">
+      <span class="label text-center" data-reveal="fade-up">LO QUE DICEN</span>
+      <h2 id="h-testimonios" class="heading text-center" data-reveal="fade-up">
+        Experiencias<br/><em>que hablan por sí solas</em>
+      </h2>
+      <!-- REEMPLAZAR con reseñas reales de Google o clientes -->
+      <div class="testi-grid" data-reveal="stagger-up">
+        <div class="testi-card">
+          <div class="testi-stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★★★★★</span></div>
+          <blockquote><p>"Llegué estresada y salí sintiéndome en las nubes. El ambiente es precioso, el equipo súper atento. Ya tengo la próxima cita agendada."</p></blockquote>
+          <cite>— Carolina M. <small>(reseña de ejemplo)</small></cite>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★★★★★</span></div>
+          <blockquote><p>"El paquete Entre Nubes de Algodón fue increíble. El jacuzzi, el masaje, los cócteles... todo de primer nivel. ¡Muy recomendado!"</p></blockquote>
+          <cite>— Andrea &amp; Sofía <small>(reseña de ejemplo)</small></cite>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★★★★★</span></div>
+          <blockquote><p>"Vine con mi esposa por nuestro aniversario. El trato fue impecable, la decoración hermosa. Del Cielo es un tesoro de Cota."</p></blockquote>
+          <cite>— Andrés P. <small>(reseña de ejemplo)</small></cite>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★★★★★</span></div>
+          <blockquote><p>"El ambiente es único, no se parece a ningún otro spa de la zona. Las uñas quedaron perfectas y el pedispa fue relajantísimo."</p></blockquote>
+          <cite>— Valentina R. <small>(reseña de ejemplo)</small></cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ UBICACIÓN ══════════════════════ -->
+  <section id="ubicacion" class="section sec-ubicacion" aria-labelledby="h-ubicacion">
+    <div class="container">
+      <span class="label text-center" data-reveal="fade-up">ENCUÉNTRANOS</span>
+      <h2 id="h-ubicacion" class="heading text-center" data-reveal="fade-up">
+        Estamos en<br/><em>Cota, Cundinamarca</em>
+      </h2>
+      <div class="ubic-grid" data-reveal="scale-up">
+        <div class="ubic-info">
+          <div class="ubic-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#C8A56A"/></svg>
+            <div><strong>Dirección</strong><p>C.C. Pueblo Viejo, Local 4<br/>Cota, Cundinamarca, Colombia</p></div>
+          </div>
+          <div class="ubic-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#C8A56A"/></svg>
+            <div><strong>Teléfonos</strong><p><a href="tel:+573209711232">320 971 1232</a><br/><a href="tel:+573229265662">322 926 5662</a></p></div>
+          </div>
+          <div class="ubic-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="#C8A56A"/></svg>
+            <div>
+              <strong>Horarios</strong>
+              <div id="horarios-container">
+                <!-- Generado por JS con indicador abierto/cerrado -->
+                <p>Lunes a Viernes · 9:00 am — 8:00 pm</p>
+                <p>Sábado · 9:00 am — 6:00 pm</p>
+                <p><!-- EDITAR: ¿Abren domingos? --></p>
+              </div>
+            </div>
+          </div>
+          <div class="ubic-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" fill="#C8A56A"/></svg>
+            <div><strong>Instagram</strong><p><a href="https://www.instagram.com/delcielo.spa" target="_blank" rel="noopener noreferrer">@delcielo.spa</a></p></div>
+          </div>
+          <a href="https://maps.google.com/?q=C.C.+Pueblo+Viejo+Local+4+Cota+Cundinamarca+Colombia" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#C8A56A"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+        <div class="ubic-map">
+          <!-- EDITAR: reemplazar con el embed URL exacto de Google Maps para C.C. Pueblo Viejo Local 4, Cota -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15906.7!2d-74.108!3d4.817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f85f8a8a8a8a8%3A0x0!2sCota%2C+Cundinamarca!5e0!3m2!1ses!2sco!4v1"
+            title="Ubicación Del Cielo Spa en Cota, Cundinamarca"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ FAQ ══════════════════════ -->
+  <section id="faq" class="section sec-faq" aria-labelledby="h-faq">
+    <div class="container narrow">
+      <span class="label text-center" data-reveal="fade-up">PREGUNTAS FRECUENTES</span>
+      <h2 id="h-faq" class="heading text-center" data-reveal="fade-up">¿Tienes dudas?<br/><em>Te respondemos</em></h2>
+      <dl class="faq-list" data-reveal="stagger-up">
+        <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Cómo reservo una cita?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>Puedes reservar desde esta página llenando el formulario de la sección "Reservar", que abrirá un chat de WhatsApp con tu información lista. También puedes escribirnos al <a href="https://wa.me/573143395286">314 339 5286</a> o llamarnos al 320 971 1232.</p></dd></div>
+        <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Atienden a parejas y grupos?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>¡Por supuesto! Tenemos paquetes especialmente diseñados para parejas y grupos (Entre Nubes de Algodón, Constelaciones, Entre Estrellas, etc.). Escríbenos para coordinar experiencias personalizadas.</p></dd></div>
+        <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Tienen parqueadero?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>Estamos en el C.C. Pueblo Viejo, Local 4, el cual cuenta con parqueadero disponible para clientes. <!-- EDITAR: confirmar si es gratuito --></p></dd></div>
+        <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Qué formas de pago aceptan?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>Aceptamos efectivo, transferencias bancarias y pagos digitales (Nequi, Daviplata). <!-- EDITAR: confirmar medios de pago exactos --></p></dd></div>
+        <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Puedo reprogramar o cancelar mi cita?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>Sí. Te pedimos hacerlo con al menos 24 horas de anticipación para poder ofrecer el espacio a otros clientes. Escríbenos por WhatsApp y lo gestionamos con gusto.</p></dd></div>
+        <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Ofrecen bonos de regalo?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>¡Sí! Tenemos bonos de regalo perfectos para cumpleaños, aniversarios, Día de la Madre y cualquier ocasión especial. Ve a la sección Bonos de Regalo o escríbenos directamente.</p></dd></div>
+        <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Con cuánto tiempo debo llegar?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>Recomendamos llegar 10–15 minutos antes para acomodarte con calma. Los paquetes de spa incluyen un ritual de bienvenida para comenzar completamente relajado(a).</p></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ CTA FINAL ══════════════════════ -->
+  <section class="section sec-cta-final" aria-label="Llamada a la acción final">
+    <div class="cta-bg-stars" aria-hidden="true">
+      <svg viewBox="0 0 300 50" fill="none" width="300">
+        <path d="M30,5 L32,15 L42,15 L34,22 L37,32 L30,26 L23,32 L26,22 L18,15 L28,15Z" stroke="#C8A56A" stroke-width="0.8" fill="none" opacity="0.6"/>
+        <path d="M150,3 L153,14 L164,14 L155,21 L158,32 L150,26 L142,32 L145,21 L136,14 L147,14Z" stroke="#C8A56A" stroke-width="1" fill="none"/>
+        <path d="M270,5 L272,15 L282,15 L274,22 L277,32 L270,26 L263,32 L266,22 L258,15 L268,15Z" stroke="#C8A56A" stroke-width="0.8" fill="none" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="container narrow text-center">
+      <h2 class="cta-final-title" data-reveal="blur-up">
+        Tu momento en el cielo<br/><em>te espera</em>
+      </h2>
+      <p class="body-text" data-reveal="fade-up">
+        Da el primer paso. Reserva tu experiencia y descubre por qué Del Cielo es donde el bienestar toca la perfección.
+      </p>
+      <a href="#reserva" class="btn btn-primary btn-lg" data-reveal="scale-up">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Reservar ahora
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer id="footer" class="footer" role="contentinfo">
+    <div class="footer-sky-deco" aria-hidden="true">
+      <div class="footer-stars-wrap">
+        <span class="fstar" style="top:12%;left:8%">✦</span><span class="fstar" style="top:22%;left:20%">✦</span>
+        <span class="fstar" style="top:8%;left:55%">✦</span><span class="fstar" style="top:35%;left:75%">✦</span>
+        <span class="fstar" style="top:50%;left:40%">✦</span><span class="fstar" style="top:65%;left:12%">✦</span>
+        <span class="fstar" style="top:70%;left:68%">✦</span><span class="fstar" style="top:5%;left:88%">✦</span>
+      </div>
+      <svg class="footer-moon-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <path d="M72,18 Q95,35 90,65 Q85,95 58,105 Q68,88 70,68 Q72,48 63,30 Q66,20 72,18Z" fill="#C8A56A" opacity="0.18"/>
+      </svg>
+    </div>
+    <div class="footer-hairline" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo/logo.png" alt="Del Cielo Spa &amp; Estética" class="footer-logo" style="filter: brightness(0) invert(1);" />
+          <p class="footer-tagline">Un respiro del cielo<br/>en el corazón de Cota.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/delcielo.spa" target="_blank" rel="noopener noreferrer" aria-label="Instagram @delcielo.spa">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+            </a>
+            <a href="https://wa.me/573143395286" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Del Cielo Spa">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Navegación footer">
+          <h4 class="fn-title">Navegación</h4>
+          <ul role="list"><li><a href="#inicio">Inicio</a></li><li><a href="#zonas">Nuestras Zonas</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#paquetes">Paquetes Spa</a></li><li><a href="#bonos">Bonos de Regalo</a></li><li><a href="#historia">Nuestra Historia</a></li><li><a href="#reserva">Reservar</a></li><li><a href="#ubicacion">Ubicación</a></li><li><a href="#faq">Preguntas Frecuentes</a></li></ul>
+        </nav>
+        <div class="footer-contact">
+          <h4 class="fn-title">Contacto</h4>
+          <address>
+            <p>C.C. Pueblo Viejo, Local 4<br/>Cota, Cundinamarca</p>
+            <p><a href="tel:+573209711232">320 971 1232</a></p>
+            <p><a href="tel:+573229265662">322 926 5662</a></p>
+            <p><a href="https://wa.me/573143395286">WhatsApp: 314 339 5286</a></p>
+            <p><a href="https://www.instagram.com/delcielo.spa" target="_blank" rel="noopener noreferrer">@delcielo.spa</a></p>
+          </address>
+        </div>
+        <div class="footer-hours">
+          <h4 class="fn-title">Horarios</h4>
+          <ul class="fh-list" role="list">
+            <li><span>Lunes a Viernes</span><span>9:00 am — 8:00 pm</span></li>
+            <li><span>Sábado</span><span>9:00 am — 6:00 pm</span></li>
+            <li class="fh-note"><!-- EDITAR: ¿Abren domingos? --></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="yr"></span> Del Cielo Spa &amp; Estética &middot; Cota, Cundinamarca &middot; Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════ WHATSAPP FLOAT ══════════════════════ -->
+  <a id="wa-float" href="https://wa.me/573143395286" target="_blank" rel="noopener noreferrer" aria-label="Reservar por WhatsApp — Del Cielo Spa" title="Escríbenos por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-tip">¿Hablamos? ✨</span>
+  </a>
+
+  <!-- CDN SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
