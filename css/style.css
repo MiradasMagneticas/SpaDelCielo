@@ -897,6 +897,66 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
 .testi-card cite { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-style: normal; }
 .testi-card cite small { font-size: 0.65rem; }
 
+/* ── Section Blend Transitions ──────────────────────────────── */
+/* Gradient fades at the bottom of each section to dissolve into the next */
+.sec-servicios,
+.sec-paquetes,
+.sec-reserva,
+.sec-testimonios,
+.sec-ubicacion,
+.sec-bienvenida {
+  overflow: hidden;
+}
+.sec-servicios::after { /* white → navy (→ paquetes) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom, transparent, var(--azul-marino));
+  pointer-events: none;
+}
+.sec-paquetes::after { /* navy → cielo-claro (→ bonos) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom, transparent, var(--cielo-claro));
+  pointer-events: none;
+}
+.sec-reserva::after { /* cielo-claro → navy (→ testimonios) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom, transparent, var(--azul-marino));
+  pointer-events: none;
+}
+.sec-testimonios::after { /* navy → white (→ ubicacion) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom, transparent, var(--blanco));
+  pointer-events: none;
+}
+.sec-ubicacion::after { /* white → cielo-claro (→ faq) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 4rem;
+  background: linear-gradient(to bottom, transparent, var(--cielo-claro));
+  pointer-events: none;
+}
+.sec-bienvenida::after { /* white → cielo-claro (→ historia) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3rem;
+  background: linear-gradient(to bottom, transparent, var(--cielo-claro));
+  pointer-events: none;
+}
+/* Also blend INTO dark sections from the top */
+.sec-paquetes::before { /* white → transparent at top, so it softly enters from servicios */
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 4rem;
+  background: linear-gradient(to bottom, var(--blanco), transparent);
+  pointer-events: none;
+}
+.sec-testimonios::before { /* cielo-claro → transparent at top */
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 4rem;
+  background: linear-gradient(to bottom, var(--cielo-claro), transparent);
+  pointer-events: none;
+}
+
 /* ── Ubicación ──────────────────────────────────────────────── */
 .sec-ubicacion { background: var(--blanco); }
 .sec-ubicacion .heading { margin: 0.5rem auto 2.5rem; }
@@ -1228,14 +1288,26 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
   /* Variables adjustments */
   :root { --max-narrow: 100%; }
 
-  /* Base */
-  .section { padding: clamp(3rem, 7vw, 5rem) 0; }
+  /* Base — tighter sections */
+  .section { padding: clamp(2rem, 5vw, 3rem) 0; }
   .container { padding: 0 1.25rem; }
 
-  /* Typography */
-  .heading { font-size: clamp(1.9rem, 7vw, 2.8rem); }
-  .zona-heading { font-size: clamp(1.8rem, 6.5vw, 2.5rem); }
+  /* Tighten blend gradient heights on mobile */
+  .sec-servicios::after,
+  .sec-paquetes::after,
+  .sec-reserva::after,
+  .sec-testimonios::after { height: 3rem; }
+  .sec-ubicacion::after { height: 2.5rem; }
+  .sec-bienvenida::after { height: 2rem; }
+  .sec-paquetes::before,
+  .sec-testimonios::before { height: 2.5rem; }
+
+  /* Section-level heading/label spacing — tighter on mobile */
+  .label { margin-bottom: 0.5rem; }
+  .heading { font-size: clamp(1.9rem, 7vw, 2.8rem); margin-bottom: 0.8rem; }
+  .zona-heading { font-size: clamp(1.8rem, 6.5vw, 2.5rem); margin-bottom: 0.7rem; }
   .body-text { font-size: 0.95rem; }
+  .body-text + .body-text { margin-top: 0.6rem; }
 
   /* Header */
   .nav-links { display: none; }
@@ -1277,23 +1349,23 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
 
   /* Bienvenida */
   .sec-bienvenida .heading { font-size: clamp(1.9rem, 7vw, 2.8rem); }
-  .lotus-divider { margin-top: 2rem; }
+  .lotus-divider { margin-top: 1.2rem; }
 
   /* Historia */
-  .historia-grid { gap: 2rem; }
+  .historia-grid { gap: 1.5rem; }
   .historia-media { max-width: 100%; }
-  .historia-frame { height: 260px; aspect-ratio: unset; }
-  .timeline { margin-top: 2rem; }
-  .tl-item { padding: 1rem 0; }
+  .historia-frame { height: 220px; aspect-ratio: unset; }
+  .timeline { margin-top: 1.5rem; }
+  .tl-item { padding: 0.7rem 0; }
 
   /* Zonas */
-  .sec-zonas > .container { margin-bottom: 1.5rem; padding: 0 1.25rem; }
-  .zona-frame { height: 260px; }
+  .sec-zonas > .container { margin-bottom: 0.8rem; padding: 0 1.25rem; }
+  .zona-frame { height: 220px; }
   .zona-row.rr .zona-text,
-  .zona-row.rl .zona-text { padding: 2rem 1.25rem 2.5rem; }
-  .zona-num { font-size: 2.8rem; }
+  .zona-row.rl .zona-text { padding: 1.2rem 1.25rem 1.8rem; }
+  .zona-num { font-size: 2.4rem; }
   .zona-text p { font-size: 0.9rem; }
-  .zona-heading { font-size: clamp(1.7rem, 6vw, 2.2rem); margin-bottom: 0.8rem; }
+  .zona-heading { font-size: clamp(1.7rem, 6vw, 2.2rem); margin-bottom: 0.5rem; }
 
   /* Servicios */
   .svc-filters {
@@ -1304,65 +1376,74 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding-bottom: 0.4rem;
+    margin-bottom: 1.2rem;
   }
   .svc-filters::-webkit-scrollbar { display: none; }
   .svc-tab { flex-shrink: 0; font-size: 0.68rem; padding: 0.5rem 1rem; }
-  .svc-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .svc-card { padding: 1.2rem; }
-  .svc-name { font-size: 1.05rem; }
+  .svc-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .svc-card { padding: 1rem; }
+  .svc-name { font-size: 1rem; }
 
   /* Paquetes */
   .sec-paquetes .heading { color: rgba(255,255,255,0.95); }
-  .spotlight { border: 1px solid rgba(200,165,106,0.25); }
-  .spotlight-media { min-height: 220px; aspect-ratio: 16/7; }
-  .spotlight-copy { padding: 1.8rem 1.25rem; }
+  .spotlight { border: 1px solid rgba(200,165,106,0.25); margin-bottom: 1.5rem; }
+  .spotlight-media { min-height: 200px; aspect-ratio: 16/7; }
+  .spotlight-copy { padding: 1.4rem 1.25rem 1.6rem; }
   .spotlight-copy .zona-heading { font-size: clamp(1.6rem, 5.5vw, 2.2rem); }
-  .pkg-prices { flex-wrap: wrap; gap: 1rem; }
+  .pkg-prices { flex-wrap: wrap; gap: 0.8rem; }
   .pp-divider { display: none; }
   .pp-val { font-size: 1.3rem; }
-  .pkg-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .pkg-card { padding: 1.4rem; }
+  .pkg-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+  .pkg-card { padding: 1.2rem; }
   .pkg-name { font-size: 1.2rem; }
 
   /* Bonos */
-  .bono-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .bono-card { padding: 1.5rem 1.1rem; }
+  .bono-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .bono-card { padding: 1.2rem 1rem; }
   .bono-name { font-size: 1rem; }
 
   /* Reserva */
   .sec-reserva .heading { font-size: clamp(1.9rem, 7vw, 2.6rem); }
-  .rform { padding: 1.5rem 1.25rem; gap: 1.1rem; }
-  .fg-row { grid-template-columns: 1fr; gap: 1.1rem; }
+  .rform { padding: 1.4rem 1.25rem; gap: 1rem; }
+  .fg-row { grid-template-columns: 1fr; gap: 1rem; }
   .fc { font-size: 0.95rem; padding: 0.8rem 0; }
   .btn-wa { font-size: 0.8rem; padding: 1rem 1.5rem; }
 
   /* Testimonios */
-  .testi-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .testi-card blockquote p { font-size: 1rem; }
+  .testi-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+  .testi-card { padding: 1.4rem 1.25rem; }
+  .testi-card blockquote p { font-size: 0.95rem; }
 
   /* Ubicación */
-  .sec-ubicacion .heading { margin-bottom: 1.5rem; }
-  .ubic-info { gap: 1.3rem; }
+  .sec-ubicacion .heading { margin-bottom: 1.2rem; }
+  .ubic-info { gap: 1rem; }
+  .ubic-item { gap: 0.75rem; }
   .ubic-item svg { width: 18px; height: 18px; }
+  .ubic-item p { font-size: 0.88rem; }
   .map-frame iframe { height: 260px; }
   .map-address-tag { font-size: 0.72rem; max-width: 180px; padding: 0.6rem 0.8rem; }
   .map-directions-btn { font-size: 0.7rem; padding: 0.45rem 0.7rem; }
 
   /* FAQ */
-  .faq-btn { font-size: 1rem; padding: 1.1rem 0; }
+  .faq-btn { font-size: 0.95rem; padding: 0.9rem 0; }
   .faq-a p { font-size: 0.88rem; }
+  .faq-item { /* tighter lines */ }
 
   /* CTA Final */
   .cta-final-title { font-size: clamp(2rem, 8vw, 3.5rem); }
-  .sec-cta-final { padding: 4rem 0; }
+  .cta-bg-stars { margin-bottom: 1rem; }
+  .sec-cta-final { padding: 3rem 0; }
+  .sec-cta-final .body-text { margin-bottom: 1.5rem; }
 
   /* Footer */
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer { padding-top: 2.5rem; }
   .footer-brand { text-align: center; }
-  .footer-logo-card { display: block; margin: 0 auto 1.2rem; width: fit-content; }
-  .footer-tagline { text-align: center; }
+  .footer-logo-card { display: block; margin: 0 auto 1rem; width: fit-content; }
+  .footer-tagline { text-align: center; font-size: 0.82rem; margin-bottom: 1rem; }
   .footer-social { justify-content: center; }
   .footer-bottom p { font-size: 0.7rem; }
+  .fn-title { margin-bottom: 0.8rem; }
 
   /* WhatsApp float */
   #wa-float { bottom: 1.5rem; right: 1.2rem; width: 54px; height: 54px; }
@@ -1376,14 +1457,34 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
 @media (max-width: 480px) {
   /* Base */
   .container { padding: 0 1rem; }
+  .section { padding: clamp(1.8rem, 4.5vw, 2.5rem) 0; }
+
+  /* Blend gradient heights — smallest phones */
+  .sec-servicios::after,
+  .sec-paquetes::after,
+  .sec-reserva::after,
+  .sec-testimonios::after { height: 2.5rem; }
+  .sec-ubicacion::after { height: 2rem; }
+  .sec-paquetes::before,
+  .sec-testimonios::before { height: 2rem; }
 
   /* Hero */
   .hero-title { font-size: clamp(3.2rem, 16vw, 5rem); }
-  .hero-eyebrow { display: none; } /* muy pequeño en pantallas tiny */
+  .hero-tagline { font-size: clamp(0.95rem, 3.2vw, 1.15rem); margin-bottom: 1.5rem; }
+  .hero-eyebrow { display: none; }
   .hero-content { padding: 0 1rem; }
 
   /* Bienvenida */
-  .sec-bienvenida .body-text { font-size: 0.9rem; }
+  .sec-bienvenida .body-text { font-size: 0.88rem; }
+
+  /* Historia */
+  .historia-frame { height: 190px; }
+  .tl-item { padding: 0.5rem 0; }
+
+  /* Zonas */
+  .zona-frame { height: 190px; }
+  .zona-row.rr .zona-text,
+  .zona-row.rl .zona-text { padding: 1rem 1rem 1.5rem; }
 
   /* Servicios */
   .svc-grid { grid-template-columns: 1fr; }
@@ -1392,19 +1493,26 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
 
   /* Bonos */
   .bono-grid { grid-template-columns: 1fr; }
+  .bono-card { padding: 1rem; }
 
   /* Paquetes */
-  .spotlight-media { aspect-ratio: 4/3; min-height: 180px; }
+  .spotlight-media { aspect-ratio: 4/3; min-height: 160px; }
+  .spotlight-copy { padding: 1.1rem 1rem 1.4rem; }
   .pkg-prices-sm { flex-direction: column; gap: 0.15rem; }
+  .pkg-card { padding: 1rem; }
 
   /* Reserva */
-  .rform { padding: 1.2rem 1rem; }
+  .rform { padding: 1.2rem 1rem; gap: 0.9rem; }
+
+  /* Testimonios */
+  .testi-card { padding: 1.2rem 1rem; }
 
   /* Footer */
-  .fn-title { margin-bottom: 0.8rem; }
-  .footer-nav ul { gap: 0.3rem; }
+  .fn-title { margin-bottom: 0.6rem; }
+  .footer-nav ul { gap: 0.25rem; }
+  .footer { padding-top: 2rem; }
 
-  /* Scroll cue — ocultar en tiny para ahorrar espacio */
+  /* Scroll cue */
   .scroll-cue { display: none; }
 
   /* WA float más pequeño */
