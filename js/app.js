@@ -151,8 +151,9 @@ function buildWaUrl(text) {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 
-function initWhatsAppLinks() {
-  document.querySelectorAll(".wa-link[data-wa-key], .wa-link[data-wa-service]").forEach(el => {
+function initWhatsAppLinks(root) {
+  const scope = root || document;
+  scope.querySelectorAll(".wa-link[data-wa-key], .wa-link[data-wa-service]").forEach(el => {
     const key = el.dataset.waKey;
     const service = el.dataset.waService;
     const msg = key ? waMessageFor(key) : waMessageFor(service);
@@ -329,35 +330,52 @@ function initMobileMenu() {
 function initHeroParallax() {
   if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
 
-  const heroMedia = document.querySelector(".hero-video, .hero-img");
-  const heroCnt = document.querySelector(".hero-content");
-  if (!heroMedia) return;
+  const heroMobileVideo = document.querySelector(".hero-video--mobile");
+  const heroDesktopVideo = document.querySelector(".hero-video--desktop");
+  const heroCopy = document.querySelector(".hero-copy");
+  const heroReel = document.querySelector(".hero-reel-frame");
 
-  gsap.to(heroMedia, {
-    yPercent: 20,
-    scale: 1.06,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".hero",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
+  if (heroMobileVideo) {
+    gsap.to(heroMobileVideo, {
+      yPercent: 15,
+      scale: 1.05,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  }
 
-  gsap.to(heroCnt, {
-    opacity: 0,
-    yPercent: -8,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".hero",
-      start: "top top",
-      end: "40% top",
-      scrub: true,
-    },
-  });
+  if (heroDesktopVideo && heroReel) {
+    gsap.to(heroReel, {
+      yPercent: -6,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  }
 
-  // Birds parallax
+  if (heroCopy) {
+    gsap.to(heroCopy, {
+      opacity: 0,
+      yPercent: -6,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "40% top",
+        scrub: true,
+      },
+    });
+  }
+
   document.querySelectorAll(".bird").forEach((bird, i) => {
     gsap.to(bird, {
       x: (i % 2 === 0 ? 40 : -30) * (i + 1),
@@ -367,7 +385,7 @@ function initHeroParallax() {
         trigger: ".hero",
         start: "top top",
         end: "bottom top",
-        scrub: 0.5 + i * 0.3,
+        scrub: true,
       },
     });
   });
@@ -467,72 +485,222 @@ const TAB_CAT_MAP = {
   humedas: ["Zonas Húmedas"],
 };
 
-function buildServiceCard(service, catName) {
-  const duration = service.d || CATEGORY_DURATION[catName] || "Consultar";
-  const priceLabel = service.desde ? `<span class="svc-price-from">desde</span>` : "";
-  const waUrl = buildWaUrl(waMessageFor(service.n));
+const FEATURED_PACKAGES = [
+  {
+    name: "Entre Estrellas",
+    dur: "2h 30 min",
+    badge: "Parejas",
+    p1: 330000,
+    p2: 500000,
+    waService: "Paquete Entre Estrellas",
+  },
+  {
+    name: "Entre Nubes de Algodón",
+    dur: "2h 50 min",
+    badge: "Estrella",
+    star: true,
+    p1: 550000,
+    p2: 850000,
+    waKey: "paqueteNubes",
+  },
+  {
+    name: "Constelaciones",
+    dur: "3 horas",
+    badge: "Experiencia",
+    p1: 400000,
+    p2: 650000,
+    waService: "Paquete Constelaciones",
+  },
+  {
+    name: "Del Cielo",
+    dur: "3 horas",
+    badge: "Completo",
+    p1: 470000,
+    p2: 750000,
+    waService: "Paquete del Cielo",
+  },
+  {
+    name: "Del Universo",
+    dur: "3 horas",
+    badge: "Sensorial",
+    p1: 500000,
+    p2: 750000,
+    waService: "Paquete del Universo",
+  },
+  {
+    name: "Bono Del Cielo",
+    subtitle: "Zonas Húmedas",
+    dur: "Turco + Sauna + Jacuzzi",
+    badge: "Húmedas",
+    p1: 350000,
+    p2: 450000,
+    waService: "Paquete Húmedo Turco + Sauna + Jacuzzi",
+  },
+];
 
-  return `<article class="svc-card">
-    <div class="svc-card-body">
-      <span class="svc-cat-badge">${catName}</span>
-      <h3 class="svc-name">${service.n}</h3>
-      <div class="svc-row-meta">
-        <span class="svc-dur">${duration}</span>
-        <span class="svc-price">${priceLabel}${formatCOP(service.p)}</span>
-      </div>
+function buildCloudPrices(p1, p2) {
+  return `<div class="svc-feat-clouds">
+    <div class="svc-cloud-price svc-cloud-price--one">
+      <span class="svc-cloud-label">1 persona</span>
+      <span class="svc-cloud-val">${formatCOP(p1)}</span>
     </div>
-    <a href="${waUrl}" class="svc-action" target="_blank" rel="noopener noreferrer">
-      Reservar
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-  </article>`;
+    <div class="svc-cloud-price svc-cloud-price--two">
+      <span class="svc-cloud-label">2 personas</span>
+      <span class="svc-cloud-val">${formatCOP(p2)}</span>
+    </div>
+  </div>`;
 }
 
-let activeTab = "todos";
+function buildAccordionItem(service, catName, showCat) {
+  const duration = service.d || CATEGORY_DURATION[catName] || "Consultar";
+  const priceLabel = service.desde ? `<span class="svc-acc-price-from">desde</span>` : "";
+  const waUrl = buildWaUrl(waMessageFor(service.n));
+  const catHtml = showCat ? `<span class="svc-acc-cat">${catName}</span>` : "";
+
+  return `<div class="svc-acc-item" data-svc="${service.n}">
+    <button type="button" class="svc-acc-trigger" aria-expanded="false">
+      <span class="svc-acc-trigger-main">
+        ${catHtml}
+        <span class="svc-acc-title">${service.n}</span>
+      </span>
+      <span class="svc-acc-summary">
+        <span class="svc-acc-dur">${duration}</span>
+        <span class="svc-acc-price">${priceLabel}${formatCOP(service.p)}</span>
+        <span class="svc-acc-icon" aria-hidden="true">+</span>
+      </span>
+    </button>
+    <div class="svc-acc-panel">
+      <div class="svc-acc-panel-inner">
+        <span class="svc-acc-dur">${duration} · ${catName}</span>
+        <a href="${waUrl}" class="svc-acc-action wa-link" data-wa-service="${service.n}" target="_blank" rel="noopener noreferrer">
+          Reservar
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function buildCategoryGroup(catName, services) {
+  const items = services.map(svc => buildAccordionItem(svc, catName, false)).join("");
+  return `<div class="svc-acc-group" data-cat="${catName}">
+    <button type="button" class="svc-acc-group-trigger" aria-expanded="false">
+      <span class="svc-acc-trigger-main">
+        <span class="svc-acc-title">${catName}<span class="svc-acc-count">(${services.length})</span></span>
+      </span>
+      <span class="svc-acc-icon" aria-hidden="true">+</span>
+    </button>
+    <div class="svc-acc-group-panel">${items}</div>
+  </div>`;
+}
+
+function bindAccordion(container) {
+  container.querySelectorAll(".svc-acc-trigger, .svc-acc-group-trigger").forEach(trigger => {
+    trigger.addEventListener("click", () => {
+      const item = trigger.closest(".svc-acc-item, .svc-acc-group");
+      const isOpen = item.classList.contains("is-open");
+
+      if (isOpen) {
+        item.classList.remove("is-open");
+        trigger.setAttribute("aria-expanded", "false");
+      } else {
+        item.classList.add("is-open");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+}
+
+let activeTab = "masajes";
 
 function renderServices(tabId) {
   const grid = document.getElementById("svc-grid");
   if (!grid) return;
 
   let html = "";
-  const cats = tabId === "todos" ? Object.keys(CATALOG) : (TAB_CAT_MAP[tabId] || []);
 
-  cats.forEach(cat => {
-    const services = CATALOG[cat] || [];
-    services.forEach(svc => {
-      html += buildServiceCard(svc, cat);
+  if (tabId === "todos") {
+    Object.keys(CATALOG).forEach(cat => {
+      const services = CATALOG[cat] || [];
+      if (services.length) html += buildCategoryGroup(cat, services);
     });
-  });
+  } else {
+    const cats = TAB_CAT_MAP[tabId] || [];
+    cats.forEach(cat => {
+      const services = CATALOG[cat] || [];
+      services.forEach(svc => {
+        html += buildAccordionItem(svc, cat, cats.length > 1);
+      });
+    });
+  }
 
-  if (!html) { grid.innerHTML = '<p style="color:var(--texto-suave);text-align:center;padding:2rem;grid-column:1/-1">No hay servicios en esta categoría aún.</p>'; return; }
+  if (!html) {
+    grid.innerHTML = '<p style="color:var(--texto-suave);text-align:center;padding:2rem">No hay servicios en esta categoría aún.</p>';
+    return;
+  }
 
-  // Animate out → swap → animate in
+  const swap = () => {
+    grid.innerHTML = html;
+    bindAccordion(grid);
+    initWhatsAppLinks(grid);
+  };
+
   if (typeof gsap !== "undefined") {
     gsap.to(grid, {
       opacity: 0, y: 8, duration: 0.2, ease: "power2.in",
       onComplete: () => {
-        grid.innerHTML = html;
+        swap();
         gsap.fromTo(grid.children,
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, stagger: 0.04, duration: 0.4, ease: "power3.out" }
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, stagger: 0.03, duration: 0.35, ease: "power3.out" }
         );
         gsap.to(grid, { opacity: 1, y: 0, duration: 0.1 });
       },
     });
   } else {
-    grid.innerHTML = html;
+    swap();
   }
+}
+
+function initFeaturedPackages() {
+  const el = document.getElementById("svc-featured");
+  if (!el) return;
+
+  const cards = FEATURED_PACKAGES.map(pkg => {
+    const waAttr = pkg.waKey
+      ? `data-wa-key="${pkg.waKey}"`
+      : `data-wa-service="${pkg.waService}"`;
+    const starClass = pkg.star ? " svc-feat-card--star" : "";
+    const subtitle = pkg.subtitle
+      ? `<span class="svc-feat-sub">${pkg.subtitle}</span>`
+      : "";
+    return `<article class="svc-feat-card${starClass}">
+      <span class="svc-feat-badge">${pkg.badge}</span>
+      <h4 class="svc-feat-name">${pkg.name}${subtitle}</h4>
+      <p class="svc-feat-meta">${pkg.dur}</p>
+      ${buildCloudPrices(pkg.p1, pkg.p2)}
+      <a href="https://wa.me/573143395286" class="btn btn-outline btn-sm wa-link" ${waAttr} target="_blank" rel="noopener noreferrer">Reservar</a>
+    </article>`;
+  }).join("");
+
+  el.innerHTML = `
+    <div class="svc-featured-head">
+      <span class="label">EXPERIENCIAS COMPLETAS</span>
+      <h3>Paquetes Destacados</h3>
+    </div>
+    <div class="svc-featured-grid">${cards}</div>`;
+
+  initWhatsAppLinks(el);
 }
 
 function initServices() {
   const filtersEl = document.getElementById("svc-filters");
   if (!filtersEl) return;
 
-  // Build filter tabs
+  initFeaturedPackages();
+
   filtersEl.innerHTML = FILTER_TABS.map(tab =>
-    `<button class="svc-tab${tab.id === "todos" ? " active" : ""}" data-tab="${tab.id}" role="tab" aria-selected="${tab.id === "todos"}">${tab.label}</button>`
+    `<button class="svc-tab${tab.id === "masajes" ? " active" : ""}" data-tab="${tab.id}" role="tab" aria-selected="${tab.id === "masajes"}">${tab.label}</button>`
   ).join("");
 
   filtersEl.querySelectorAll(".svc-tab").forEach(btn => {
@@ -548,7 +716,7 @@ function initServices() {
     });
   });
 
-  renderServices("todos");
+  renderServices("masajes");
 }
 
 /* ── Horarios & Open/Closed Status ─────────────────────────── */

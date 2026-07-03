@@ -86,7 +86,6 @@
         <li><a href="#zonas" class="mobile-link">Nuestras Zonas</a></li>
         <li><a href="#servicios" class="mobile-link">Servicios</a></li>
         <li><a href="#paquetes" class="mobile-link">Paquetes Spa</a></li>
-        <li><a href="#bonos" class="mobile-link">Bonos de Regalo</a></li>
         <li><a href="#historia" class="mobile-link">Nuestra Historia</a></li>
         <li><a href="#ubicacion" class="mobile-link">Ubicación</a></li>
         <li><a href="#faq" class="mobile-link">Preguntas Frecuentes</a></li>
@@ -97,37 +96,44 @@
 
   <!-- ══════════════════════ HERO ══════════════════════ -->
   <section id="inicio" class="hero" aria-label="Del Cielo Spa &amp; Estética — Bienvenidos">
-    <div class="hero-bg" aria-hidden="true">
-      <video class="hero-video" autoplay loop muted playsinline preload="auto" poster="assets/img/hero.png" aria-hidden="true">
-        <source src="assets/video/caminadita.mp4" type="video/mp4" />
+    <!-- Móvil: video full-bleed de fondo -->
+    <div class="hero-bg hero-bg--mobile" aria-hidden="true">
+      <video class="hero-video hero-video--mobile" autoplay loop muted playsinline preload="auto" poster="assets/img/hero.png" aria-hidden="true">
+        <source src="assets/video/video-experiencia.mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay"></div>
     </div>
-    <div class="hero-content">
-      <span class="hero-eyebrow">SPA &amp; ESTÉTICA &nbsp;·&nbsp; COTA, CUNDINAMARCA</span>
-      <h1 class="hero-title">Del Cielo</h1>
-      <p class="hero-tagline">Un respiro del cielo<br/>en el corazón de Cota</p>
-      <a href="https://wa.me/573143395286" class="btn btn-hero wa-link" data-wa-key="general" target="_blank" rel="noopener noreferrer">
-        Reservar tu experiencia
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">SPA &amp; ESTÉTICA &nbsp;·&nbsp; COTA, CUNDINAMARCA</span>
+        <h1 class="hero-title">Del Cielo</h1>
+        <p class="hero-tagline">Un respiro del cielo<br/>en el corazón de Cota</p>
+        <a href="https://wa.me/573143395286" class="btn btn-hero wa-link" data-wa-key="general" target="_blank" rel="noopener noreferrer">
+          Reservar tu experiencia
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <div class="hero-reel-wrap" aria-hidden="false">
+        <div class="hero-reel-frame">
+          <video class="hero-video hero-video--desktop" autoplay loop muted playsinline preload="auto" poster="assets/img/hero.png" aria-label="Experiencia Del Cielo Spa">
+            <source src="assets/video/video-experiencia.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
     </div>
-    <!-- Seagulls -->
     <div class="hero-birds" aria-hidden="true">
       <svg class="bird b1" viewBox="0 0 60 24"><path d="M0,12 Q15,1 30,8 Q45,1 60,12" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       <svg class="bird b2" viewBox="0 0 40 16"><path d="M0,8 Q10,0 20,6 Q30,0 40,8" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
       <svg class="bird b3" viewBox="0 0 50 20"><path d="M0,10 Q12,1 25,7 Q38,1 50,10" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
     </div>
-    <!-- Cloud bottom transition -->
-    <div class="hero-clouds-bottom" aria-hidden="true">
-      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-        <path d="M0,60 Q180,10 360,50 Q540,90 720,40 Q900,0 1080,38 Q1260,76 1440,45 L1440,100 L0,100 Z" fill="#FBFCFE"/>
-        <path d="M0,80 Q240,40 480,70 Q720,100 960,60 Q1200,20 1440,65 L1440,100 L0,100 Z" fill="#FBFCFE" opacity="0.6"/>
+    <div class="cloud-divider cloud-divider--hero" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,80 C120,40 240,90 360,55 C480,20 600,95 720,50 C840,5 960,85 1080,45 C1200,5 1320,75 1440,40 L1440,120 L0,120 Z" fill="var(--blanco)"/>
+        <path d="M0,95 C200,60 400,100 600,70 C800,40 1000,105 1200,65 C1300,50 1380,85 1440,75 L1440,120 L0,120 Z" fill="var(--blanco)" opacity="0.55"/>
       </svg>
     </div>
-    <!-- Scroll cue -->
     <div class="scroll-cue" aria-hidden="true">
       <div class="scroll-cue-line"></div>
       <span>scroll</span>
@@ -306,6 +312,13 @@
     </div>
   </section>
 
+  <div class="cloud-divider cloud-divider--between" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,70 C180,30 360,90 540,50 C720,10 900,80 1080,45 C1260,10 1380,60 1440,40 L1440,100 L0,100 Z" fill="var(--rose-claro)"/>
+      <path d="M0,85 C240,55 480,95 720,65 C960,35 1200,90 1440,70 L1440,100 L0,100 Z" fill="var(--blanco)" opacity="0.6"/>
+    </svg>
+  </div>
+
   <!-- ══════════════════════ SERVICIOS ══════════════════════ -->
   <section id="servicios" class="section sec-servicios" aria-labelledby="h-servicios">
     <div class="container">
@@ -313,7 +326,10 @@
       <h2 id="h-servicios" class="heading text-center" data-reveal="fade-up">Nuestros Servicios</h2>
       <p class="body-text text-center" data-reveal="fade-up">Todos los precios en pesos colombianos (COP).</p>
       <div class="svc-filters" id="svc-filters" role="tablist" aria-label="Filtrar por categoría" data-reveal="fade-up"></div>
-      <div class="svc-grid" id="svc-grid" role="region" aria-live="polite" aria-label="Servicios"></div>
+
+      <div class="svc-featured" id="svc-featured" data-reveal="fade-up" aria-label="Paquetes destacados"></div>
+
+      <div class="svc-accordion" id="svc-grid" role="region" aria-live="polite" aria-label="Servicios"></div>
     </div>
   </section>
 
@@ -426,86 +442,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════ BONOS ══════════════════════ -->
-  <section id="bonos" class="section sec-bonos" aria-labelledby="h-bonos">
-    <div class="container">
-      <span class="label text-center" data-reveal="fade-up">REGALOS ESPECIALES</span>
-      <h2 id="h-bonos" class="heading text-center" data-reveal="fade-up">Bonos de Regalo</h2>
-      <p class="body-text text-center" data-reveal="fade-up">Regala una experiencia celestial. El detalle perfecto para quien más quieres.</p>
-      <div class="bono-grid" data-reveal="stagger-up">
-        <div class="bono-card">
-          <div class="bono-icon" aria-hidden="true">
-            <svg viewBox="0 0 50 50" fill="none"><path d="M25,10 Q31,2 39,8 Q47,14 41,23 L25,42 L9,23 Q3,14 11,8 Q19,2 25,10Z" stroke="#C8A56A" stroke-width="1.5" fill="none"/></svg>
-          </div>
-          <h3 class="bono-name">Bono Tratamiento Capilar del Cielo</h3>
-          <p class="bono-dur">1 hora</p>
-          <ul class="bono-list"><li>Cóctel de bienvenida</li><li>Aromaterapia &amp; Musicoterapia</li><li>Cromoterapia e Hidroterapia</li></ul>
-          <a href="https://wa.me/573143395286" class="btn btn-outline btn-sm wa-link" data-wa-service="Bono Tratamiento Capilar del Cielo" target="_blank" rel="noopener noreferrer">Consultar precio</a>
-        </div>
-        <div class="bono-card">
-          <div class="bono-icon" aria-hidden="true">
-            <svg viewBox="0 0 50 50" fill="none"><path d="M25,10 Q31,2 39,8 Q47,14 41,23 L25,42 L9,23 Q3,14 11,8 Q19,2 25,10Z" stroke="#C8A56A" stroke-width="1.5" fill="none"/></svg>
-          </div>
-          <h3 class="bono-name">Bono Del Mundial — Mamá e Hija</h3>
-          <p class="bono-dur">2 horas 30 minutos</p>
-          <ul class="bono-list"><li>Aromaterapia &amp; Musicoterapia</li><li>Sauna o turco</li><li>Jacuzzi</li><li>Pinchos de fruta &amp; copa de jugo</li></ul>
-          <a href="https://wa.me/573143395286" class="btn btn-outline btn-sm wa-link" data-wa-service="Bono Del Mundial — Mamá e Hija" target="_blank" rel="noopener noreferrer">Consultar precio</a>
-        </div>
-        <div class="bono-card bono-card--featured">
-          <div class="bono-thumb">
-            <img src="assets/img/bono-barberia.jpg" alt="Barbería premium Del Cielo — Bono Copa del Cielo para hombres" loading="lazy" />
-          </div>
-          <h3 class="bono-name">Bono Copa del Cielo (Hombre)</h3>
-          <p class="bono-dur">2 horas 30 minutos</p>
-          <ul class="bono-list"><li>Skin Sir Fausto</li><li>Corte de cabello</li><li>Whisky o aguardiente</li><li>Masaje capilar</li><li>Turco o sauna · Ambiente premium</li></ul>
-          <a href="https://wa.me/573143395286" class="btn btn-outline btn-sm wa-link" data-wa-key="bonoCopaCielo" target="_blank" rel="noopener noreferrer">Consultar precio</a>
-        </div>
-        <div class="bono-card">
-          <div class="bono-icon" aria-hidden="true">
-            <svg viewBox="0 0 50 50" fill="none"><path d="M25,10 Q31,2 39,8 Q47,14 41,23 L25,42 L9,23 Q3,14 11,8 Q19,2 25,10Z" stroke="#C8A56A" stroke-width="1.5" fill="none"/></svg>
-          </div>
-          <h3 class="bono-name">Bono Mes de Padres</h3>
-          <p class="bono-dur">2 horas</p>
-          <ul class="bono-list"><li>Turco / Sauna</li><li>Corte</li><li>Pedispa &amp; Skincare</li><li>Copa de whisky</li></ul>
-          <a href="https://wa.me/573143395286" class="btn btn-outline btn-sm wa-link" data-wa-service="Bono Mes de Padres" target="_blank" rel="noopener noreferrer">Consultar precio</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════ TESTIMONIOS ══════════════════════ -->
-  <section id="testimonios" class="section sec-testimonios" aria-labelledby="h-testimonios">
-    <div class="container">
-      <span class="label text-center" data-reveal="fade-up">LO QUE DICEN</span>
-      <h2 id="h-testimonios" class="heading text-center" data-reveal="fade-up">
-        Experiencias<br/><em>que hablan por sí solas</em>
-      </h2>
-      <!-- REEMPLAZAR con reseñas reales de Google o clientes -->
-      <div class="testi-grid" data-reveal="stagger-up">
-        <div class="testi-card">
-          <div class="testi-stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★★★★★</span></div>
-          <blockquote><p>"Llegué estresada y salí sintiéndome en las nubes. El ambiente es precioso, el equipo súper atento. Ya tengo la próxima cita agendada."</p></blockquote>
-          <cite>— Carolina M. <small>(reseña de ejemplo)</small></cite>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★★★★★</span></div>
-          <blockquote><p>"El paquete Entre Nubes de Algodón fue increíble. El jacuzzi, el masaje, los cócteles... todo de primer nivel. ¡Muy recomendado!"</p></blockquote>
-          <cite>— Andrea &amp; Sofía <small>(reseña de ejemplo)</small></cite>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★★★★★</span></div>
-          <blockquote><p>"Vine con mi esposa por nuestro aniversario. El trato fue impecable, la decoración hermosa. Del Cielo es un tesoro de Cota."</p></blockquote>
-          <cite>— Andrés P. <small>(reseña de ejemplo)</small></cite>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★★★★★</span></div>
-          <blockquote><p>"El ambiente es único, no se parece a ningún otro spa de la zona. Las uñas quedaron perfectas y el pedispa fue relajantísimo."</p></blockquote>
-          <cite>— Valentina R. <small>(reseña de ejemplo)</small></cite>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ══════════════════════ UBICACIÓN ══════════════════════ -->
   <section id="ubicacion" class="section sec-ubicacion" aria-labelledby="h-ubicacion">
     <div class="container">
@@ -544,34 +480,35 @@
             Cómo llegar
           </a>
         </div>
-        <div class="ubic-map">
-          <div class="map-frame">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d400!2d-74.09760!3d4.80341!2m3!1f45!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f87000a5eb92b%3A0x93ed2070a96e8660!2sDEL+CIELO+SPA+Y+ESTETICA!5e1!3m2!1ses!2sco!4v1719619200000!5m2!1ses!2sco"
-              title="Del Cielo Spa y Estética — Vista 3D satelital, C.C. Pueblo Viejo, Cota, Cundinamarca"
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-            <div class="map-address-tag" aria-hidden="true">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#C8A56A"/></svg>
-              <div>
-                <strong>Del Cielo Spa &amp; Estética</strong>
-                C.C. Pueblo Viejo, Local 4 · Calle 11 1-00<br/>Cota, Cundinamarca
+        <div class="ubic-media-col">
+          <div class="ubic-map">
+            <div class="map-frame">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d400!2d-74.09760!3d4.80341!2m3!1f45!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f87000a5eb92b%3A0x93ed2070a96e8660!2sDEL+CIELO+SPA+Y+ESTETICA!5e1!3m2!1ses!2sco!4v1719619200000!5m2!1ses!2sco"
+                title="Del Cielo Spa y Estética — Vista 3D satelital, C.C. Pueblo Viejo, Cota, Cundinamarca"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <div class="map-address-tag" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#C8A56A"/></svg>
+                <div>
+                  <strong>Del Cielo Spa &amp; Estética</strong>
+                  C.C. Pueblo Viejo, Local 4 · Calle 11 1-00<br/>Cota, Cundinamarca
+                </div>
               </div>
+              <a href="https://maps.google.com/?q=4.8034093,-74.0975972&t=k" target="_blank" rel="noopener noreferrer" class="map-directions-btn" aria-label="Abrir en Google Maps para obtener indicaciones">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+                Cómo llegar
+              </a>
             </div>
-            <a href="https://maps.google.com/?q=4.8034093,-74.0975972&t=k" target="_blank" rel="noopener noreferrer" class="map-directions-btn" aria-label="Abrir en Google Maps para obtener indicaciones">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
-              Cómo llegar
-            </a>
           </div>
-        </div>
-      </div>
-      <div class="ubic-video-wrap" data-reveal="fade-up">
-        <h3 class="ubic-video-title">Cómo llegar</h3>
-        <p class="ubic-video-desc">Mira el recorrido paso a paso hasta Del Cielo Spa en C.C. Pueblo Viejo, Cota.</p>
-        <div class="ubic-video">
-          <video src="assets/video/video-como-llegar.mp4" controls playsinline preload="metadata" poster="assets/img/zona-recepcion.jpg" title="Video — Cómo llegar a Del Cielo Spa, Cota">
-            Tu navegador no soporta la reproducción de video.
-          </video>
+          <div class="ubic-video-story" data-reveal="fade-up">
+            <p class="ubic-video-label">Cómo llegar</p>
+            <div class="ubic-video-reel">
+              <video src="assets/video/video-como-llegar.mp4" controls playsinline preload="metadata" poster="assets/img/zona-recepcion.jpg" title="Video — Cómo llegar a Del Cielo Spa, Cota">
+                Tu navegador no soporta la reproducción de video.
+              </video>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -588,7 +525,7 @@
         <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Tienen parqueadero?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>Estamos en el C.C. Pueblo Viejo, Local 4, el cual cuenta con parqueadero disponible para clientes. <!-- EDITAR: confirmar si es gratuito --></p></dd></div>
         <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Qué formas de pago aceptan?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>Aceptamos efectivo, transferencias bancarias y pagos digitales (Nequi, Daviplata). <!-- EDITAR: confirmar medios de pago exactos --></p></dd></div>
         <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Puedo reprogramar o cancelar mi cita?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>Sí. Te pedimos hacerlo con al menos 24 horas de anticipación para poder ofrecer el espacio a otros clientes. Escríbenos por WhatsApp y lo gestionamos con gusto.</p></dd></div>
-        <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Ofrecen bonos de regalo?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>¡Sí! Tenemos bonos de regalo perfectos para cumpleaños, aniversarios, Día de la Madre y cualquier ocasión especial. Ve a la sección Bonos de Regalo o escríbenos directamente.</p></dd></div>
+        <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Ofrecen bonos de regalo?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>¡Sí! Tenemos bonos de regalo perfectos para cumpleaños, aniversarios y ocasiones especiales. Escríbenos por WhatsApp y te ayudamos a elegir la experiencia ideal.</p></dd></div>
         <div class="faq-item"><dt class="faq-q"><button type="button" class="faq-btn" aria-expanded="false">¿Con cuánto tiempo debo llegar?<span class="faq-ico" aria-hidden="true">+</span></button></dt><dd class="faq-a" hidden><p>Recomendamos llegar 10–15 minutos antes para acomodarte con calma. Los paquetes de spa incluyen un ritual de bienvenida para comenzar completamente relajado(a).</p></dd></div>
       </dl>
     </div>
@@ -649,7 +586,7 @@
         </div>
         <nav class="footer-nav" aria-label="Navegación footer">
           <h4 class="fn-title">Navegación</h4>
-          <ul role="list"><li><a href="#inicio">Inicio</a></li><li><a href="#zonas">Nuestras Zonas</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#paquetes">Paquetes Spa</a></li><li><a href="#bonos">Bonos de Regalo</a></li><li><a href="#historia">Nuestra Historia</a></li><li><a href="#reserva">Reservar</a></li><li><a href="#ubicacion">Ubicación</a></li><li><a href="#faq">Preguntas Frecuentes</a></li></ul>
+          <ul role="list"><li><a href="#inicio">Inicio</a></li><li><a href="#zonas">Nuestras Zonas</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#paquetes">Paquetes Spa</a></li><li><a href="#historia">Nuestra Historia</a></li><li><a href="#reserva">Reservar</a></li><li><a href="#ubicacion">Ubicación</a></li><li><a href="#faq">Preguntas Frecuentes</a></li></ul>
         </nav>
         <div class="footer-contact">
           <h4 class="fn-title">Contacto</h4>
