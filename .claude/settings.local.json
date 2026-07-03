@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\cuent\\\\OneDrive\\\\Escritorio\\\\SpaLuz\\\\css\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\cuent\\\\OneDrive\\\\Escritorio\\\\SpaLuz\\\\js\")",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(\\(Get-Command npx -ErrorAction SilentlyContinue\\).Source; \\(Get-Command node -ErrorAction SilentlyContinue\\).Source; \\(Get-Command python -ErrorAction SilentlyContinue\\).Source)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\cuent\\\\AppData\\\\Local\\\\Programs\" -ErrorAction SilentlyContinue | Select-Object Name; Get-ChildItem \"C:\\\\Program Files\" -ErrorAction SilentlyContinue | Where-Object { $_.Name -match \"node|python|php|ruby\" } | Select-Object Name)",
+      "mcp__Claude_in_Chrome__navigate",
+      "Bash(cmd /c start \"\" \"C:\\\\Users\\\\cuent\\\\AppData\\\\Local\\\\Programs\\\\Opera GX\\\\opera.exe\" \"http://localhost:3456\")",
+      "PowerShell(Start-Process \"C:\\\\Users\\\\cuent\\\\AppData\\\\Local\\\\Programs\\\\Opera GX\\\\opera.exe\" -ArgumentList \"--new-tab\", \"http://localhost:3456/index.html#reservar\")"
+    ]
+  }
+}
