@@ -135,6 +135,46 @@ function formatCOP(n) {
   return "$" + n.toLocaleString("es-CO");
 }
 
+/* ── WhatsApp Deep Links ─────────────────────────────────────── */
+const WA_MESSAGES = {
+  general: "Hola! Me gustaría agendar una experiencia en Del Cielo Spa. ¿Qué disponibilidad tienen?",
+  paqueteNubes: "Hola! Me interesa agendar el paquete Entre Nubes de Algodón. ¿Qué disponibilidad tienen?",
+  bonoCopaCielo: "Hola! Quiero consultar la disponibilidad para el Bono Copa del Cielo de hombre.",
+};
+
+function waMessageFor(keyOrService) {
+  if (WA_MESSAGES[keyOrService]) return WA_MESSAGES[keyOrService];
+  return `Hola! Me interesa agendar ${keyOrService}. ¿Qué disponibilidad tienen?`;
+}
+
+function buildWaUrl(text) {
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
+function initWhatsAppLinks() {
+  document.querySelectorAll(".wa-link[data-wa-key], .wa-link[data-wa-service]").forEach(el => {
+    const key = el.dataset.waKey;
+    const service = el.dataset.waService;
+    const msg = key ? waMessageFor(key) : waMessageFor(service);
+    el.href = buildWaUrl(msg);
+    if (!el.target) {
+      el.target = "_blank";
+      el.rel = "noopener noreferrer";
+    }
+  });
+}
+
+const CATEGORY_DURATION = {
+  "Masajes": "60–90 min",
+  "Facial & Pestañas": "45–90 min",
+  "Manicura & Pedicura": "45–120 min",
+  "Depilación": "15–45 min",
+  "Cabello": "45–180 min",
+  "Barbería": "30–60 min",
+  "Corporal": "60–90 min",
+  "Zonas Húmedas": "60 min",
+};
+
 /* ── Loader ─────────────────────────────────────────────────── */
 function initLoader() {
   const loader = document.getElementById("loader");
@@ -224,10 +264,15 @@ function initHeader() {
 function closeMobileMenu() {
   const menu = document.getElementById("mobile-menu");
   const btn  = document.getElementById("hamburger");
-  if (!menu) return;
-  menu.hidden = true;
-  if (btn) btn.classList.remove("open"), btn.setAttribute("aria-expanded", "false");
-  document.body.style.overflow = "";
+  if (!menu || menu.hidden) return;
+
+  menu.classList.add("is-closing");
+  setTimeout(() => {
+    menu.hidden = true;
+    menu.classList.remove("is-closing");
+    if (btn) btn.classList.remove("open"), btn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }, 320);
 }
 
 function initMobileMenu() {
@@ -241,16 +286,20 @@ function initMobileMenu() {
     if (isOpen) {
       closeMobileMenu();
     } else {
+      menu.classList.remove("is-closing");
       menu.hidden = false;
       btn.classList.add("open");
       btn.setAttribute("aria-expanded", "true");
       document.body.style.overflow = "hidden";
-      // Focus trap: move focus to close button
       setTimeout(() => { if (close) close.focus(); }, 50);
     }
   });
 
   if (close) close.addEventListener("click", closeMobileMenu);
+
+  menu.querySelectorAll(".mobile-link").forEach(link => {
+    link.addEventListener("click", () => closeMobileMenu());
+  });
 
   // Close on Escape
   document.addEventListener("keydown", e => {
@@ -280,11 +329,11 @@ function initMobileMenu() {
 function initHeroParallax() {
   if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
 
-  const heroImg = document.querySelector(".hero-img");
+  const heroMedia = document.querySelector(".hero-video, .hero-img");
   const heroCnt = document.querySelector(".hero-content");
-  if (!heroImg) return;
+  if (!heroMedia) return;
 
-  gsap.to(heroImg, {
+  gsap.to(heroMedia, {
     yPercent: 20,
     scale: 1.06,
     ease: "none",
@@ -404,43 +453,41 @@ function initReveal() {
 
 /* ── Services ───────────────────────────────────────────────── */
 const FILTER_TABS = [
-  { id: "todos",    label: "Todos" },
-  { id: "masajes",  label: "Masajes" },
-  { id: "facial",   label: "Facial" },
-  { id: "unas",     label: "Uñas" },
-  { id: "depil",    label: "Depilación" },
-  { id: "cabello",  label: "Cabello" },
-  { id: "barberia", label: "Barbería" },
-  { id: "corporal", label: "Corporal" },
-  { id: "humedas",  label: "Húmedas" },
+  { id: "todos",   label: "Todos" },
+  { id: "masajes", label: "Masajes & Terapias" },
+  { id: "facial",  label: "Facial & Estética" },
+  { id: "unas",    label: "Manicura & Pedicura" },
+  { id: "humedas", label: "Zonas Húmedas" },
 ];
 
 const TAB_CAT_MAP = {
-  masajes:  ["Masajes"],
-  facial:   ["Facial & Pestañas"],
-  unas:     ["Manicura & Pedicura"],
-  depil:    ["Depilación"],
-  cabello:  ["Cabello"],
-  barberia: ["Barbería"],
-  corporal: ["Corporal"],
-  humedas:  ["Zonas Húmedas"],
+  masajes: ["Masajes", "Corporal"],
+  facial:  ["Facial & Pestañas", "Depilación", "Cabello", "Barbería"],
+  unas:    ["Manicura & Pedicura"],
+  humedas: ["Zonas Húmedas"],
 };
 
 function buildServiceCard(service, catName) {
-  const prefix = service.desde ? "Desde " : "";
-  const priceStr = prefix + formatCOP(service.p);
+  const duration = service.d || CATEGORY_DURATION[catName] || "Consultar";
+  const priceLabel = service.desde ? `<span class="svc-price-from">desde</span>` : "";
+  const waUrl = buildWaUrl(waMessageFor(service.n));
 
-  return `<div class="svc-card">
-    <span class="svc-cat-badge">${catName}</span>
-    <h3 class="svc-name">${service.n}</h3>
-    <p class="svc-price"><em>${prefix ? "desde" : ""}</em>${formatCOP(service.p)}</p>
-    <a href="#reserva" class="svc-reserve" data-service="${service.n}">
+  return `<article class="svc-card">
+    <div class="svc-card-body">
+      <span class="svc-cat-badge">${catName}</span>
+      <h3 class="svc-name">${service.n}</h3>
+      <div class="svc-row-meta">
+        <span class="svc-dur">${duration}</span>
+        <span class="svc-price">${priceLabel}${formatCOP(service.p)}</span>
+      </div>
+    </div>
+    <a href="${waUrl}" class="svc-action" target="_blank" rel="noopener noreferrer">
       Reservar
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
-  </div>`;
+  </article>`;
 }
 
 let activeTab = "todos";
@@ -467,7 +514,6 @@ function renderServices(tabId) {
       opacity: 0, y: 8, duration: 0.2, ease: "power2.in",
       onComplete: () => {
         grid.innerHTML = html;
-        attachServiceClickHandlers();
         gsap.fromTo(grid.children,
           { opacity: 0, y: 14 },
           { opacity: 1, y: 0, stagger: 0.04, duration: 0.4, ease: "power3.out" }
@@ -477,12 +523,7 @@ function renderServices(tabId) {
     });
   } else {
     grid.innerHTML = html;
-    attachServiceClickHandlers();
   }
-}
-
-function attachServiceClickHandlers() {
-  // Click delegation handled globally by initServiceClickDelegation
 }
 
 function initServices() {
@@ -508,118 +549,6 @@ function initServices() {
   });
 
   renderServices("todos");
-}
-
-/* ── Reservation Form v2 ─────────────────────────────────────── */
-function initReservationForm() {
-  // ── Category Buttons ─────────────────────────────────────────
-  const catBtns   = document.querySelectorAll(".rcat-btn");
-  const selWrap   = document.getElementById("rselected-wrap");
-  const selName   = document.getElementById("rselected-name");
-  const changeBtn = document.getElementById("rchange-btn");
-  const svcField  = document.getElementById("f-servicio");
-
-  catBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      catBtns.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-pressed", "false"); });
-      btn.classList.add("active");
-      btn.setAttribute("aria-pressed", "true");
-      if (svcField)  svcField.value       = btn.dataset.service;
-      if (selName)   selName.textContent  = btn.dataset.service;
-      if (selWrap)   selWrap.hidden       = false;
-    });
-  });
-
-  if (changeBtn) {
-    changeBtn.addEventListener("click", () => {
-      catBtns.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-pressed", "false"); });
-      if (selWrap)  selWrap.hidden  = true;
-      if (svcField) svcField.value = "";
-    });
-  }
-
-  // ── Time Buttons ─────────────────────────────────────────────
-  const timeBtns  = document.querySelectorAll(".rtime-btn");
-  const horaField = document.getElementById("f-hora");
-
-  timeBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      timeBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      if (horaField) horaField.value = btn.dataset.time;
-    });
-  });
-
-  // ── Min date = today ─────────────────────────────────────────
-  const fechaInput = document.getElementById("f-fecha");
-  if (fechaInput) fechaInput.min = new Date().toISOString().split("T")[0];
-
-  // ── Form Submit → WhatsApp ───────────────────────────────────
-  const form = document.getElementById("reserva-form");
-  if (!form) return;
-
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    const servicio = (svcField?.value    || "").trim();
-    const fecha    = (fechaInput?.value  || "").trim();
-    const hora     = (horaField?.value   || "").trim();
-    const nombre   = (form.nombre?.value || "").trim();
-    const notas    = (form.notas?.value  || "").trim();
-    const errorEl  = document.getElementById("form-error");
-
-    if (!servicio || !fecha || !nombre) {
-      if (errorEl) errorEl.hidden = false;
-      return;
-    }
-    if (errorEl) errorEl.hidden = true;
-
-    const fechaDate = new Date(fecha + "T12:00:00");
-    const fechaFmt  = fechaDate.toLocaleDateString("es-CO", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
-
-    const msg = [
-      "Hola Del Cielo ✨ Quiero reservar:",
-      `• Servicio: ${servicio}`,
-      `• Fecha: ${fechaFmt}`,
-      hora ? `• Hora: ${hora}` : "",
-      `• Nombre: ${nombre}`,
-      notas ? `• Notas: ${notas}` : "",
-    ].filter(Boolean).join("\n");
-
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
-  });
-}
-
-function preselectService(svcName) {
-  if (!svcName) return;
-
-  // Try to find a matching category button (exact or keyword match)
-  const catBtns = document.querySelectorAll(".rcat-btn");
-  const nameLow = svcName.toLowerCase();
-  let matched = false;
-
-  catBtns.forEach(btn => {
-    const svc = (btn.dataset.service || "").toLowerCase();
-    // Match if first word of category appears in the requested service name
-    const keyword = svc.split(/\s|&/)[0];
-    if (!matched && (svc === nameLow || nameLow.includes(keyword) || keyword.includes(nameLow.split(/\s|&/)[0]))) {
-      btn.click();
-      matched = true;
-    }
-  });
-
-  // If no match, just set the hidden input & show selected wrap
-  if (!matched) {
-    const svcField = document.getElementById("f-servicio");
-    const selWrap  = document.getElementById("rselected-wrap");
-    const selName  = document.getElementById("rselected-name");
-    if (svcField) svcField.value = svcName;
-    if (selName)  selName.textContent = svcName;
-    if (selWrap)  selWrap.hidden = false;
-  }
-
-  // Smooth scroll to form
-  const reservaEl = document.getElementById("reserva");
-  if (reservaEl) reservaEl.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 /* ── Horarios & Open/Closed Status ─────────────────────────── */
@@ -749,30 +678,6 @@ function initSectionProgress() {
   // Nothing extra needed — CSS handles color progression
 }
 
-/* ── Global data-service click delegation ───────────────────── */
-function initServiceClickDelegation() {
-  document.addEventListener("click", e => {
-    const a = e.target.closest("[data-service]");
-    if (!a) return;
-    const svc = a.dataset.service;
-    const href = a.getAttribute("href");
-    if (href && href.startsWith("#") && svc) {
-      e.preventDefault();
-      preselectService(svc);
-      const target = document.querySelector(href);
-      if (target) {
-        const scroll = () => target.scrollIntoView({ behavior: "smooth", block: "start" });
-        if (typeof lenis !== "undefined" && lenis) {
-          lenis.scrollTo(target, { offset: -80, duration: 1.4 });
-        } else {
-          scroll();
-        }
-        closeMobileMenu();
-      }
-    }
-  });
-}
-
 /* ── Init All ───────────────────────────────────────────────── */
 (function init() {
   // Register GSAP plugin
@@ -787,8 +692,7 @@ function initServiceClickDelegation() {
   initHorarios();
   initFAQ();
   initServices();
-  initReservationForm();
-  initServiceClickDelegation();
+  initWhatsAppLinks();
 
   // GSAP-dependent inits (run after GSAP loads via CDN)
   function onGSAPReady() {
