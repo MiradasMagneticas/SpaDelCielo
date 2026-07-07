@@ -451,50 +451,140 @@ function initReveal() {
   });
 }
 
-/* ── Services (category-first accordion, premium) ───────────── */
-const ICO = {
-  masajes:  '<path d="M12 5.5c-3.5 0-6 2.2-6 5 0 2 1.4 3.7 3.4 4.5"/><path d="M12 5.5c3.5 0 6 2.2 6 5 0 2-1.4 3.7-3.4 4.5"/><path d="M12 5.5V3"/><path d="M9.4 15c.8 1.2 1.7 2 2.6 2s1.8-.8 2.6-2"/>',
-  facial:   '<path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7z"/><circle cx="18.5" cy="5.5" r=".8"/>',
-  manicura: '<rect x="9" y="9" width="6" height="9.5" rx="1.6"/><path d="M10.5 9V6h3v3"/><path d="M11 4.3h2"/>',
-  depilacion:'<path d="M5 19c0-7 5-12 14-12 0 7-5 12-14 12z"/><path d="M8.5 15.5 16 8"/>',
-  cabello:  '<circle cx="6.5" cy="7" r="2.3"/><circle cx="6.5" cy="17" r="2.3"/><path d="M8.6 8.4 20 16M8.6 15.6 20 8"/>',
-  barberia: '<rect x="9" y="4" width="6" height="16" rx="3"/><path d="M9 8l6-3.5M9 12.5l6-3.5M9 17l6-3.5"/>',
-  corporal: '<circle cx="12" cy="6" r="3"/><path d="M6 21c0-4 2.6-7 6-7s6 3 6 7"/>',
-  humedas:  '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
-};
-function icoSvg(paths) {
-  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
-}
+/* ── Services (category-first accordion, legible) ───────────── */
 const CATEGORY_META = {
-  "Masajes":             { label: "Masajes & Terapias",     ico: icoSvg(ICO.masajes),   sub: "Relajación profunda" },
-  "Facial & Pestañas":   { label: "Facial & Pestañas",       ico: icoSvg(ICO.facial),    sub: "Piel radiante" },
-  "Manicura & Pedicura": { label: "Manicura & Pedicura",     ico: icoSvg(ICO.manicura),  sub: "Manos y pies perfectos" },
-  "Depilación":          { label: "Depilación",              ico: icoSvg(ICO.depilacion),sub: "Piel suave y libre" },
-  "Cabello":             { label: "Cabello & Color",         ico: icoSvg(ICO.cabello),   sub: "Peluquería profesional" },
-  "Barbería":            { label: "Barbería",                ico: icoSvg(ICO.barberia),  sub: "Estilo caballero" },
-  "Corporal":            { label: "Tratamientos Corporales", ico: icoSvg(ICO.corporal),  sub: "Moldea y renueva" },
-  "Zonas Húmedas":       { label: "Zonas Húmedas",           ico: icoSvg(ICO.humedas),   sub: "Sauna · Turco · Jacuzzi" },
+  "Masajes":             { label: "Masajes & Terapias",      emoji: "💆", sub: "Relaja cuerpo y mente" },
+  "Facial & Pestañas":   { label: "Facial & Pestañas",        emoji: "✨", sub: "Cuidado de rostro y mirada" },
+  "Manicura & Pedicura": { label: "Manicura & Pedicura",      emoji: "💅", sub: "Manos y pies impecables" },
+  "Depilación":          { label: "Depilación",               emoji: "🪒", sub: "Cera, hilo o láser" },
+  "Cabello":             { label: "Cabello & Color",          emoji: "💇", sub: "Cortes, color y tratamientos" },
+  "Barbería":            { label: "Barbería",                 emoji: "🧔", sub: "Corte y barba para caballero" },
+  "Corporal":            { label: "Tratamientos Corporales",  emoji: "🌿", sub: "Moldea, drena y renueva" },
+  "Zonas Húmedas":       { label: "Zonas Húmedas",            emoji: "♨️", sub: "Sauna, turco y jacuzzi" },
 };
+
+const CATEGORY_SECTIONS = {
+  "Masajes": [
+    { title: "Relajación", emoji: "🧘", hint: "Para descansar y soltar tensiones", names: ["Relajante cuerpo completo", "Relajante localizado", "4 manos"] },
+    { title: "Terapéuticos", emoji: "💪", hint: "Para dolores, rigidez o embarazo", names: ["Deportivo", "Descontracturante", "Prenatal"] },
+    { title: "Reducción & facial", emoji: "🌸", hint: "Complementos de cuidado corporal", names: ["Reductor (por sesión)", "Facial"] },
+  ],
+  "Facial & Pestañas": [
+    { title: "Limpieza e hidratación", emoji: "🧖", hint: "Limpia, hidrata y renueva la piel", names: ["Limpieza facial profunda", "Limpieza facial sencilla", "Hidratación facial"] },
+    { title: "Tratamientos avanzados", emoji: "⚡", hint: "Tecnología y paquetes de sesiones", names: ["Yoga facial (sesión)", "Radiofrecuencia facial (1 sesión)", "Paquete 5 sesiones RF (cada 21 días)"] },
+    { title: "Pestañas", emoji: "👁️", hint: "Volumen, lifting y estilo coreano", names: ["Lifting de pestañas", "Volumen 3D / 5D y superlight", "Punto a punto (coreano)"] },
+    { title: "Cejas", emoji: "✏️", hint: "Diseño y pigmentación", names: ["Pigmentación de cejas en henna", "Depilación cejas + henna"] },
+  ],
+  "Manicura & Pedicura": [
+    { title: "Pedicura & pies", emoji: "🦶", hint: "Cuidado completo de los pies", names: ["Pedicura", "Pedispa", "Jelly spa", "Parafina"] },
+    { title: "Manicura básica", emoji: "💅", hint: "Manos, esmalte y spa", names: ["Manicura sencilla", "Spa de manos", "Semipermanente", "Cambio de esmalte"] },
+    { title: "Uñas artificiales", emoji: "💎", hint: "Acrílico, polygel, dipping y más", names: ["Dipping", "Base Rubber", "Polygel", "Uñas acrílicas", "Press on", "Mantenimiento press on"] },
+    { title: "Reflexología", emoji: "🤲", hint: "Bienestar en manos y pies", names: ["Reflexología podal", "Reflexología palmar"] },
+  ],
+  "Depilación": [
+    { title: "Con cera", emoji: "🕯️", hint: "Depilación tradicional con cera", names: ["Cejas (cera)", "Axilas (cera)", "Bigote (cera)", "Bikini (cera)", "Media pierna (cera)", "Pierna completa (cera)", "Cara completa (cera)"] },
+    { title: "Con hilo", emoji: "🧵", hint: "Precisión en cejas y rostro", names: ["Hilo cejas", "Hilo cara completa"] },
+    { title: "Láser", emoji: "⚡", hint: "Depilación definitiva por sesiones", names: ["Láser — por sesión", "Láser — 8 sesiones 1 zona", "Láser — 16 ses. 2 zonas", "Láser — 24 ses. 3 zonas"] },
+  ],
+  "Cabello": [
+    { title: "Cortes & peinado", emoji: "✂️", hint: "Corte y secado con estilo", names: ["Corte dama", "Corte caballero", "Blower", "Blower con ondas"] },
+    { title: "Coloración", emoji: "🎨", hint: "Color, mechas y tonos nuevos", names: ["Balayage", "Baby light", "Base color", "Base color INOA"] },
+    { title: "Tratamientos capilares", emoji: "💆", hint: "Reparación, keratina y diagnóstico", names: ["Keratina vegana", "Keratina clásica", "Mascarilla capilar Kérastase", "Olaplex reparador", "Fusio Dose", "Diagnóstico capilar"] },
+  ],
+  "Barbería": [
+    { title: "Corte & perfilación", emoji: "✂️", hint: "Corte limpio y detalles", names: ["Corte caballero", "Retoque base", "Perfilación de corte", "Perfilación de barba"] },
+    { title: "Ritual & cuidado", emoji: "🧴", hint: "Experiencia premium de barba", names: ["Ritual de barba", "Skin Sir Fausto"] },
+  ],
+  "Corporal": [
+    { title: "Sesiones sueltas", emoji: "💧", hint: "Una visita, un tratamiento", names: ["Drenaje linfático", "Body sculpt (sesión)", "Presoterapia traje completo (1 ses.)", "Piso pélvico (sesión)"] },
+    { title: "Paquetes de sesiones", emoji: "📦", hint: "Planes con varias visitas incluidas", names: ["Body sculpt (10 sesiones)", "Tratamiento anticelulítico (10 ses.)", "Masajes moldeadores (10 ses.)", "Presoterapia paquete 6 ses.", "Piso pélvico paquete 6 ses."] },
+  ],
+  "Zonas Húmedas": [
+    { title: "Sauna", emoji: "🔥", hint: "Calor seco para relajarte", names: ["Sauna"] },
+    { title: "Turco", emoji: "💨", hint: "Vapor húmedo y detox", names: ["Turco"] },
+    { title: "Jacuzzi", emoji: "🛁", hint: "Burbujas y hidromasaje", names: ["Jacuzzi"] },
+  ],
+};
+
+const SERVICE_EMOJI = {
+  relajante: "😌", deportivo: "🏃", descontracturante: "🔧", prenatal: "🤰",
+  reductor: "📉", facial: "🌸", limpieza: "🫧", hidratación: "💧", yoga: "🧘",
+  radiofrecuencia: "📡", lifting: "👁️", volumen: "✨", punto: "🇰🇷", henna: "🖊️",
+  pedicura: "🦶", pedispa: "🛁", semipermanente: "💅", manicura: "💅", spa: "🤲",
+  jelly: "🍮", dipping: "💎", rubber: "🛡️", polygel: "💠", acrílic: "💎", press: "👆",
+  reflexología: "🦶", esmalte: "🎨", parafina: "🕯️", cera: "🕯️", hilo: "🧵", láser: "⚡",
+  corte: "✂️", blower: "💨", balayage: "🌅", baby: "✨", color: "🎨", keratina: "💆",
+  mascarilla: "🧴", olaplex: "💎", fusio: "✨", diagnóstico: "🔍", barba: "🧔", ritual: "🧴",
+  drenaje: "💧", sculpt: "🏋️", anticelulítico: "🌿", moldeador: "💪", presoterapia: "🦵",
+  piso: "🩺", sauna: "🔥", turco: "💨", jacuzzi: "🛁", "4 manos": "🙌",
+};
+
+function emojiForService(name) {
+  const key = Object.keys(SERVICE_EMOJI).find(k => name.toLowerCase().includes(k));
+  return key ? SERVICE_EMOJI[key] : "•";
+}
+
+function getSectionsForCategory(cat, services) {
+  const defs = CATEGORY_SECTIONS[cat];
+  if (!defs) return [{ title: "Servicios", emoji: "✨", hint: "", items: services }];
+
+  const used = new Set();
+  const sections = defs.map(def => {
+    const items = def.names
+      .map(name => services.find(s => s.n === name))
+      .filter(Boolean);
+    items.forEach(s => used.add(s.n));
+    return { ...def, items };
+  });
+
+  const leftover = services.filter(s => !used.has(s.n));
+  if (leftover.length) {
+    sections.push({ title: "Otros servicios", emoji: "➕", hint: "", items: leftover });
+  }
+
+  return sections.filter(s => s.items.length);
+}
 
 function buildServiceCard(service, catName) {
   const duration = service.d || CATEGORY_DURATION[catName] || "Consultar";
   const priceLabel = service.desde ? `<span class="svc-price-from">desde</span>` : "";
   const waUrl = buildWaUrl(waMessageFor(service.n));
+  const emoji = emojiForService(service.n);
+  const note = service.nota ? `<span class="svc-note">${service.nota}</span>` : "";
 
   return `<article class="svc-card">
+    <span class="svc-card-emoji" aria-hidden="true">${emoji}</span>
     <div class="svc-card-body">
       <h3 class="svc-name">${service.n}</h3>
-      <span class="svc-dur">${duration}</span>
+      <div class="svc-card-meta">
+        <span class="svc-dur">⏱ ${duration}</span>
+        ${note}
+      </div>
     </div>
     <div class="svc-card-right">
       <span class="svc-price">${priceLabel}${formatCOP(service.p)}</span>
-      <a href="${waUrl}" class="svc-action" target="_blank" rel="noopener noreferrer" aria-label="Reservar ${service.n}">
+      <a href="${waUrl}" class="svc-action" target="_blank" rel="noopener noreferrer" aria-label="Reservar ${service.n} por WhatsApp">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
     </div>
   </article>`;
+}
+
+function buildSectionBox(section, catName) {
+  const cards = section.items.map(svc => buildServiceCard(svc, catName)).join("");
+  return `<div class="svc-section">
+    <header class="svc-section-head">
+      <span class="svc-section-emoji" aria-hidden="true">${section.emoji}</span>
+      <div class="svc-section-titles">
+        <h4 class="svc-section-title">${section.title}</h4>
+        ${section.hint ? `<p class="svc-section-hint">${section.hint}</p>` : ""}
+      </div>
+      <span class="svc-section-count">${section.items.length}</span>
+    </header>
+    <div class="svc-section-grid">${cards}</div>
+  </div>`;
 }
 
 function togglePanel(panel, open) {
@@ -524,19 +614,18 @@ function initServices() {
 
   const cats = Object.keys(CATALOG);
   acc.innerHTML = cats.map((cat, i) => {
-    const meta = CATEGORY_META[cat] || { label: cat, ico: "", sub: "" };
+    const meta = CATEGORY_META[cat] || { label: cat, emoji: "✨", sub: "" };
     const services = CATALOG[cat] || [];
-    const cards = services.map(svc => buildServiceCard(svc, cat)).join("");
+    const sections = getSectionsForCategory(cat, services);
+    const sectionHtml = sections.map(sec => buildSectionBox(sec, cat)).join("");
     const minPrice = Math.min(...services.map(s => s.p));
-    const num = String(i + 1).padStart(2, "0");
     const isOpen = i === 0;
     return `<div class="svc-cat${isOpen ? " open" : ""}" data-cat="${cat}" style="--i:${i}">
       <button class="svc-cat-head" type="button" aria-expanded="${isOpen}">
-        <span class="svc-cat-num" aria-hidden="true">${num}</span>
-        <span class="svc-cat-ico" aria-hidden="true">${meta.ico}</span>
+        <span class="svc-cat-emoji" aria-hidden="true">${meta.emoji}</span>
         <span class="svc-cat-titles">
           <span class="svc-cat-title">${meta.label}</span>
-          <span class="svc-cat-sub">${meta.sub} · ${services.length} servicios</span>
+          <span class="svc-cat-sub">${meta.sub} · ${services.length} opciones</span>
         </span>
         <span class="svc-cat-meta">
           <span class="svc-cat-from">desde <b>${formatCOP(minPrice)}</b></span>
@@ -546,7 +635,7 @@ function initServices() {
         </span>
       </button>
       <div class="svc-cat-panel"${isOpen ? "" : " hidden"}>
-        <div class="svc-cat-grid">${cards}</div>
+        <div class="svc-sections">${sectionHtml}</div>
       </div>
     </div>`;
   }).join("");
