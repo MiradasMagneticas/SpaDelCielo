@@ -451,20 +451,16 @@ function initReveal() {
   });
 }
 
-/* ── Services ───────────────────────────────────────────────── */
-const FILTER_TABS = [
-  { id: "todos",   label: "Todos" },
-  { id: "masajes", label: "Masajes & Terapias" },
-  { id: "facial",  label: "Facial & Estética" },
-  { id: "unas",    label: "Manicura & Pedicura" },
-  { id: "humedas", label: "Zonas Húmedas" },
-];
-
-const TAB_CAT_MAP = {
-  masajes: ["Masajes", "Corporal"],
-  facial:  ["Facial & Pestañas", "Depilación", "Cabello", "Barbería"],
-  unas:    ["Manicura & Pedicura"],
-  humedas: ["Zonas Húmedas"],
+/* ── Services (category-first accordion) ────────────────────── */
+const CATEGORY_META = {
+  "Masajes":             { label: "Masajes & Terapias",   ico: "💆", sub: "Relajación profunda" },
+  "Facial & Pestañas":   { label: "Facial & Pestañas",     ico: "✨", sub: "Piel radiante" },
+  "Manicura & Pedicura": { label: "Manicura & Pedicura",   ico: "💅", sub: "Manos y pies perfectos" },
+  "Depilación":          { label: "Depilación",            ico: "🌸", sub: "Piel suave" },
+  "Cabello":             { label: "Cabello & Color",       ico: "💇", sub: "Peluquería profesional" },
+  "Barbería":            { label: "Barbería",              ico: "💈", sub: "Estilo caballero" },
+  "Corporal":            { label: "Tratamientos Corporales", ico: "🧖", sub: "Moldea y renueva" },
+  "Zonas Húmedas":       { label: "Zonas Húmedas",         ico: "♨️", sub: "Sauna · Turco · Jacuzzi" },
 };
 
 function buildServiceCard(service, catName) {
@@ -474,14 +470,13 @@ function buildServiceCard(service, catName) {
 
   return `<article class="svc-card">
     <div class="svc-card-body">
-      <span class="svc-cat-badge">${catName}</span>
       <h3 class="svc-name">${service.n}</h3>
       <div class="svc-row-meta">
         <span class="svc-dur">${duration}</span>
         <span class="svc-price">${priceLabel}${formatCOP(service.p)}</span>
       </div>
     </div>
-    <a href="${waUrl}" class="svc-action" target="_blank" rel="noopener noreferrer">
+    <a href="${waUrl}" class="svc-action" target="_blank" rel="noopener noreferrer" aria-label="Reservar ${service.n}">
       Reservar
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -490,65 +485,187 @@ function buildServiceCard(service, catName) {
   </article>`;
 }
 
-let activeTab = "todos";
-
-function renderServices(tabId) {
-  const grid = document.getElementById("svc-grid");
-  if (!grid) return;
-
-  let html = "";
-  const cats = tabId === "todos" ? Object.keys(CATALOG) : (TAB_CAT_MAP[tabId] || []);
-
-  cats.forEach(cat => {
-    const services = CATALOG[cat] || [];
-    services.forEach(svc => {
-      html += buildServiceCard(svc, cat);
+function togglePanel(panel, open) {
+  if (typeof gsap === "undefined") { panel.hidden = !open; return; }
+  if (open) {
+    panel.hidden = false;
+    panel.style.overflow = "hidden";
+    const h = panel.scrollHeight;
+    gsap.fromTo(panel, { height: 0, opacity: 0 }, {
+      height: h, opacity: 1, duration: 0.45, ease: "power2.out",
+      onComplete: () => { panel.style.height = "auto"; panel.style.overflow = ""; if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh(); },
     });
-  });
-
-  if (!html) { grid.innerHTML = '<p style="color:var(--texto-suave);text-align:center;padding:2rem;grid-column:1/-1">No hay servicios en esta categoría aún.</p>'; return; }
-
-  // Animate out → swap → animate in
-  if (typeof gsap !== "undefined") {
-    gsap.to(grid, {
-      opacity: 0, y: 8, duration: 0.2, ease: "power2.in",
-      onComplete: () => {
-        grid.innerHTML = html;
-        gsap.fromTo(grid.children,
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, stagger: 0.04, duration: 0.4, ease: "power3.out" }
-        );
-        gsap.to(grid, { opacity: 1, y: 0, duration: 0.1 });
-      },
-    });
+    gsap.fromTo(panel.querySelectorAll(".svc-card"),
+      { opacity: 0, y: 12 }, { opacity: 1, y: 0, stagger: 0.03, duration: 0.4, ease: "power3.out", delay: 0.05 });
   } else {
-    grid.innerHTML = html;
+    panel.style.overflow = "hidden";
+    gsap.to(panel, {
+      height: 0, opacity: 0, duration: 0.32, ease: "power2.in",
+      onComplete: () => { panel.hidden = true; panel.style.height = ""; panel.style.overflow = ""; panel.style.opacity = ""; },
+    });
   }
 }
 
 function initServices() {
-  const filtersEl = document.getElementById("svc-filters");
-  if (!filtersEl) return;
+  const acc = document.getElementById("svc-accordion");
+  if (!acc) return;
 
-  // Build filter tabs
-  filtersEl.innerHTML = FILTER_TABS.map(tab =>
-    `<button class="svc-tab${tab.id === "todos" ? " active" : ""}" data-tab="${tab.id}" role="tab" aria-selected="${tab.id === "todos"}">${tab.label}</button>`
-  ).join("");
+  const cats = Object.keys(CATALOG);
+  acc.innerHTML = cats.map((cat, i) => {
+    const meta = CATEGORY_META[cat] || { label: cat, ico: "❖", sub: "" };
+    const services = CATALOG[cat] || [];
+    const cards = services.map(svc => buildServiceCard(svc, cat)).join("");
+    const isOpen = i === 0;
+    return `<div class="svc-cat${isOpen ? " open" : ""}" data-cat="${cat}" style="--i:${i}">
+      <button class="svc-cat-head" type="button" aria-expanded="${isOpen}">
+        <span class="svc-cat-ico" aria-hidden="true">${meta.ico}</span>
+        <span class="svc-cat-titles">
+          <span class="svc-cat-title">${meta.label}</span>
+          <span class="svc-cat-sub">${meta.sub}</span>
+        </span>
+        <span class="svc-cat-count">${services.length}</span>
+        <span class="svc-cat-chev" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="svc-cat-panel"${isOpen ? "" : " hidden"}>
+        <div class="svc-cat-grid">${cards}</div>
+      </div>
+    </div>`;
+  }).join("");
 
-  filtersEl.querySelectorAll(".svc-tab").forEach(btn => {
-    btn.addEventListener("click", () => {
-      filtersEl.querySelectorAll(".svc-tab").forEach(b => {
-        b.classList.remove("active");
-        b.setAttribute("aria-selected", "false");
+  acc.querySelectorAll(".svc-cat-head").forEach(head => {
+    head.addEventListener("click", () => {
+      const cat = head.closest(".svc-cat");
+      const panel = cat.querySelector(".svc-cat-panel");
+      const isOpen = head.getAttribute("aria-expanded") === "true";
+
+      // Close others (one open at a time)
+      acc.querySelectorAll(".svc-cat-head[aria-expanded='true']").forEach(oh => {
+        if (oh === head) return;
+        oh.setAttribute("aria-expanded", "false");
+        oh.closest(".svc-cat").classList.remove("open");
+        togglePanel(oh.closest(".svc-cat").querySelector(".svc-cat-panel"), false);
       });
-      btn.classList.add("active");
-      btn.setAttribute("aria-selected", "true");
-      activeTab = btn.dataset.tab;
-      renderServices(activeTab);
+
+      head.setAttribute("aria-expanded", String(!isOpen));
+      cat.classList.toggle("open", !isOpen);
+      togglePanel(panel, !isOpen);
     });
   });
+}
 
-  renderServices("todos");
+/* ── Packages (horizontal carousel) ─────────────────────────── */
+const PACKAGES_DATA = [
+  { name: "Entre Estrellas",   lema: "Porque juntas brillamos más",      dur: "2h 30min", grad: "linear-gradient(150deg,#4A7BA6,#1C3D5A)",  ico: "✦",
+    incl: ["Cóctel de bienvenida","Yoga facial","Jelly spa de manos","Aromaterapia & Musicoterapia","Sauna o baño turco"],
+    p1: 330000, p2: 500000 },
+  { name: "Entre Nubes de Algodón", lema: "El ritual estrella",         dur: "2h 50min", grad: "linear-gradient(150deg,#8a6fa8,#4A7BA6)",  ico: "☁", featured: true,
+    incl: ["Cóctel & pasabocas","Exfoliación y envoltura corporal","Baño turco + Jacuzzi","Masaje con piedras calientes","Velo facial + decoración"],
+    p1: 550000, p2: 850000 },
+  { name: "Constelaciones",    lema: "Un cielo de sensaciones",          dur: "3 horas",  grad: "linear-gradient(150deg,#2d5f82,#0e2a3f)",  ico: "✧",
+    incl: ["Aromaterapia & Musicoterapia","Spa de manos","Masaje capilar","Sauna turco","Masaje localizado","Bebida del cielo"],
+    p1: 400000, p2: 650000 },
+  { name: "Del Cielo",         lema: "Nuestra firma",                    dur: "3 horas",  grad: "linear-gradient(150deg,#C8A56A,#8a6f3f)",  ico: "☾",
+    incl: ["Cóctel de bienvenida","Pedispa","Yoga facial","Envoltura corporal","Jacuzzi","Pasabocas"],
+    p1: 470000, p2: 750000 },
+  { name: "Del Universo",      lema: "Cuerpo, mente y espíritu",         dur: "3 horas",  grad: "linear-gradient(150deg,#3b4a7a,#1C3D5A)",  ico: "✵",
+    incl: ["Aromaterapia & Musicoterapia","Hidratación facial","Reflexología podal y palmar","Sauna + Jacuzzi","Bebida del cielo"],
+    p1: 500000, p2: 750000 },
+  { name: "Bono Del Cielo",    lema: "Zonas húmedas",                    dur: "Zonas húmedas", grad: "linear-gradient(150deg,#4A7BA6,#2d5f82)", ico: "❋",
+    incl: ["Baño húmedo turco","Sauna","Jacuzzi","Bebida del cielo"],
+    p1: 350000, p2: 450000 },
+  { name: "Sauna · 6 Sesiones", lema: "Un ritual semanal",              dur: "6 sesiones", grad: "linear-gradient(150deg,#6b7f5a,#3f4a3a)", ico: "♨",
+    incl: ["6 sesiones · 1 por semana","Bebida energizante en cada sesión"],
+    solo: 420000 },
+];
+
+function buildPackageCard(pkg) {
+  const waUrl = buildWaUrl(waMessageFor("Paquete " + pkg.name));
+  const badge = pkg.featured ? `<span class="pc-badge">Recomendado</span>` : "";
+  const incl = pkg.incl.map(x => `<li>${x}</li>`).join("");
+  const prices = pkg.solo
+    ? `<div class="pc-prices solo"><div class="pc-price"><span class="pc-plabel">Individual</span><span class="pc-pval">${formatCOP(pkg.solo)}</span></div></div>`
+    : `<div class="pc-prices"><div class="pc-price"><span class="pc-plabel">1 persona</span><span class="pc-pval">${formatCOP(pkg.p1)}</span></div><div class="pc-price"><span class="pc-plabel">2 personas</span><span class="pc-pval">${formatCOP(pkg.p2)}</span></div></div>`;
+
+  return `<article class="pkg-card2${pkg.featured ? " is-featured" : ""}" role="listitem">
+    <div class="pc-media" style="background:${pkg.grad}">
+      ${badge}
+      <span class="pc-ico" aria-hidden="true">${pkg.ico}</span>
+      <span class="pc-media-star a" aria-hidden="true">✦</span>
+      <span class="pc-media-star b" aria-hidden="true">✦</span>
+      <span class="pc-photo-soon">Foto próximamente</span>
+    </div>
+    <div class="pc-body">
+      <h3 class="pc-name">${pkg.name}</h3>
+      <p class="pc-lema">${pkg.lema}</p>
+      <p class="pc-dur"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg> ${pkg.dur}</p>
+      <ul class="pc-list">${incl}</ul>
+      ${prices}
+      <a href="${waUrl}" class="btn btn-primary btn-sm pc-btn" target="_blank" rel="noopener noreferrer">Reservar</a>
+    </div>
+  </article>`;
+}
+
+// Custom rAF smooth scroll (native scroll-behavior gets cancelled by Lenis/ScrollTrigger)
+function animateScrollLeft(el, target, duration) {
+  const start = el.scrollLeft;
+  const max = el.scrollWidth - el.clientWidth;
+  const to = Math.max(0, Math.min(target, max));
+  const dist = to - start;
+  if (Math.abs(dist) < 1) return;
+  const t0 = performance.now();
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  el._scrollAnim = (el._scrollAnim || 0) + 1;
+  const token = el._scrollAnim;
+  function step(now) {
+    if (el._scrollAnim !== token) return; // superseded
+    const p = Math.min(1, (now - t0) / duration);
+    el.scrollLeft = start + dist * ease(p);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function initPackages() {
+  const track = document.getElementById("pkg-track");
+  if (!track) return;
+  track.innerHTML = PACKAGES_DATA.map(buildPackageCard).join("");
+
+  const prev = document.getElementById("pkg-prev");
+  const next = document.getElementById("pkg-next");
+  const dotsWrap = document.getElementById("pkg-dots");
+
+  function cardStep() {
+    const card = track.querySelector(".pkg-card2");
+    if (!card) return track.clientWidth;
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || "0") || 0;
+    return card.getBoundingClientRect().width + gap;
+  }
+
+  if (next) next.addEventListener("click", () => animateScrollLeft(track, track.scrollLeft + cardStep(), 480));
+  if (prev) prev.addEventListener("click", () => animateScrollLeft(track, track.scrollLeft - cardStep(), 480));
+
+  // Dots
+  if (dotsWrap) {
+    dotsWrap.innerHTML = PACKAGES_DATA.map((_, i) => `<button class="pkg-dot" type="button" data-i="${i}" aria-label="Ir al paquete ${i + 1}"></button>`).join("");
+    dotsWrap.querySelectorAll(".pkg-dot").forEach(dot => {
+      dot.addEventListener("click", () => animateScrollLeft(track, cardStep() * parseInt(dot.dataset.i, 10), 480));
+    });
+  }
+
+  function updateUI() {
+    const max = track.scrollWidth - track.clientWidth - 2;
+    if (prev) prev.classList.toggle("is-disabled", track.scrollLeft <= 2);
+    if (next) next.classList.toggle("is-disabled", track.scrollLeft >= max);
+    if (dotsWrap) {
+      const active = Math.round(track.scrollLeft / cardStep());
+      dotsWrap.querySelectorAll(".pkg-dot").forEach((d, i) => d.classList.toggle("active", i === active));
+    }
+  }
+  track.addEventListener("scroll", updateUI, { passive: true });
+  window.addEventListener("resize", updateUI);
+  updateUI();
 }
 
 /* ── Horarios & Open/Closed Status ─────────────────────────── */
@@ -692,6 +809,7 @@ function initSectionProgress() {
   initHorarios();
   initFAQ();
   initServices();
+  initPackages();
   initWhatsAppLinks();
 
   // GSAP-dependent inits (run after GSAP loads via CDN)
