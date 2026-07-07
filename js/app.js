@@ -451,16 +451,29 @@ function initReveal() {
   });
 }
 
-/* ── Services (category-first accordion) ────────────────────── */
+/* ── Services (category-first accordion, premium) ───────────── */
+const ICO = {
+  masajes:  '<path d="M12 5.5c-3.5 0-6 2.2-6 5 0 2 1.4 3.7 3.4 4.5"/><path d="M12 5.5c3.5 0 6 2.2 6 5 0 2-1.4 3.7-3.4 4.5"/><path d="M12 5.5V3"/><path d="M9.4 15c.8 1.2 1.7 2 2.6 2s1.8-.8 2.6-2"/>',
+  facial:   '<path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7z"/><circle cx="18.5" cy="5.5" r=".8"/>',
+  manicura: '<rect x="9" y="9" width="6" height="9.5" rx="1.6"/><path d="M10.5 9V6h3v3"/><path d="M11 4.3h2"/>',
+  depilacion:'<path d="M5 19c0-7 5-12 14-12 0 7-5 12-14 12z"/><path d="M8.5 15.5 16 8"/>',
+  cabello:  '<circle cx="6.5" cy="7" r="2.3"/><circle cx="6.5" cy="17" r="2.3"/><path d="M8.6 8.4 20 16M8.6 15.6 20 8"/>',
+  barberia: '<rect x="9" y="4" width="6" height="16" rx="3"/><path d="M9 8l6-3.5M9 12.5l6-3.5M9 17l6-3.5"/>',
+  corporal: '<circle cx="12" cy="6" r="3"/><path d="M6 21c0-4 2.6-7 6-7s6 3 6 7"/>',
+  humedas:  '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+};
+function icoSvg(paths) {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
+}
 const CATEGORY_META = {
-  "Masajes":             { label: "Masajes & Terapias",   ico: "💆", sub: "Relajación profunda" },
-  "Facial & Pestañas":   { label: "Facial & Pestañas",     ico: "✨", sub: "Piel radiante" },
-  "Manicura & Pedicura": { label: "Manicura & Pedicura",   ico: "💅", sub: "Manos y pies perfectos" },
-  "Depilación":          { label: "Depilación",            ico: "🌸", sub: "Piel suave" },
-  "Cabello":             { label: "Cabello & Color",       ico: "💇", sub: "Peluquería profesional" },
-  "Barbería":            { label: "Barbería",              ico: "💈", sub: "Estilo caballero" },
-  "Corporal":            { label: "Tratamientos Corporales", ico: "🧖", sub: "Moldea y renueva" },
-  "Zonas Húmedas":       { label: "Zonas Húmedas",         ico: "♨️", sub: "Sauna · Turco · Jacuzzi" },
+  "Masajes":             { label: "Masajes & Terapias",     ico: icoSvg(ICO.masajes),   sub: "Relajación profunda" },
+  "Facial & Pestañas":   { label: "Facial & Pestañas",       ico: icoSvg(ICO.facial),    sub: "Piel radiante" },
+  "Manicura & Pedicura": { label: "Manicura & Pedicura",     ico: icoSvg(ICO.manicura),  sub: "Manos y pies perfectos" },
+  "Depilación":          { label: "Depilación",              ico: icoSvg(ICO.depilacion),sub: "Piel suave y libre" },
+  "Cabello":             { label: "Cabello & Color",         ico: icoSvg(ICO.cabello),   sub: "Peluquería profesional" },
+  "Barbería":            { label: "Barbería",                ico: icoSvg(ICO.barberia),  sub: "Estilo caballero" },
+  "Corporal":            { label: "Tratamientos Corporales", ico: icoSvg(ICO.corporal),  sub: "Moldea y renueva" },
+  "Zonas Húmedas":       { label: "Zonas Húmedas",           ico: icoSvg(ICO.humedas),   sub: "Sauna · Turco · Jacuzzi" },
 };
 
 function buildServiceCard(service, catName) {
@@ -471,17 +484,16 @@ function buildServiceCard(service, catName) {
   return `<article class="svc-card">
     <div class="svc-card-body">
       <h3 class="svc-name">${service.n}</h3>
-      <div class="svc-row-meta">
-        <span class="svc-dur">${duration}</span>
-        <span class="svc-price">${priceLabel}${formatCOP(service.p)}</span>
-      </div>
+      <span class="svc-dur">${duration}</span>
     </div>
-    <a href="${waUrl}" class="svc-action" target="_blank" rel="noopener noreferrer" aria-label="Reservar ${service.n}">
-      Reservar
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+    <div class="svc-card-right">
+      <span class="svc-price">${priceLabel}${formatCOP(service.p)}</span>
+      <a href="${waUrl}" class="svc-action" target="_blank" rel="noopener noreferrer" aria-label="Reservar ${service.n}">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
   </article>`;
 }
 
@@ -512,20 +524,25 @@ function initServices() {
 
   const cats = Object.keys(CATALOG);
   acc.innerHTML = cats.map((cat, i) => {
-    const meta = CATEGORY_META[cat] || { label: cat, ico: "❖", sub: "" };
+    const meta = CATEGORY_META[cat] || { label: cat, ico: "", sub: "" };
     const services = CATALOG[cat] || [];
     const cards = services.map(svc => buildServiceCard(svc, cat)).join("");
+    const minPrice = Math.min(...services.map(s => s.p));
+    const num = String(i + 1).padStart(2, "0");
     const isOpen = i === 0;
     return `<div class="svc-cat${isOpen ? " open" : ""}" data-cat="${cat}" style="--i:${i}">
       <button class="svc-cat-head" type="button" aria-expanded="${isOpen}">
+        <span class="svc-cat-num" aria-hidden="true">${num}</span>
         <span class="svc-cat-ico" aria-hidden="true">${meta.ico}</span>
         <span class="svc-cat-titles">
           <span class="svc-cat-title">${meta.label}</span>
-          <span class="svc-cat-sub">${meta.sub}</span>
+          <span class="svc-cat-sub">${meta.sub} · ${services.length} servicios</span>
         </span>
-        <span class="svc-cat-count">${services.length}</span>
-        <span class="svc-cat-chev" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="svc-cat-meta">
+          <span class="svc-cat-from">desde <b>${formatCOP(minPrice)}</b></span>
+          <span class="svc-cat-chev" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </span>
       </button>
       <div class="svc-cat-panel"${isOpen ? "" : " hidden"}>
@@ -557,28 +574,35 @@ function initServices() {
 
 /* ── Packages (horizontal carousel de flyers) ───────────────── */
 const PACKAGES_DATA = [
-  { name: "Entre Estrellas",         img: "assets/img/paquetes/pkg-estrellas.png" },
-  { name: "Entre Nubes de Algodón",  img: "assets/img/paquetes/pkg-nubes.png", featured: true },
-  { name: "Constelaciones",          img: "assets/img/paquetes/pkg-constelaciones.png" },
-  { name: "Del Cielo",               img: "assets/img/paquetes/pkg-del-cielo.png" },
-  { name: "Del Universo",            img: "assets/img/paquetes/pkg-universo.png" },
-  { name: "Bono Del Cielo · Zonas Húmedas", img: "assets/img/paquetes/pkg-bono-humedas.png" },
-  { name: "Sauna · 6 Sesiones",      img: "assets/img/paquetes/pkg-sauna.png" },
+  { name: "Entre Estrellas",         img: "assets/img/paquetes/pkg-estrellas.png",     p1: 330000, p2: 500000 },
+  { name: "Entre Nubes de Algodón",  img: "assets/img/paquetes/pkg-nubes.png", featured: true, p1: 550000, p2: 850000 },
+  { name: "Constelaciones",          img: "assets/img/paquetes/pkg-constelaciones.png", p1: 400000, p2: 650000 },
+  { name: "Del Cielo",               img: "assets/img/paquetes/pkg-del-cielo.png",      p1: 470000, p2: 750000 },
+  { name: "Del Universo",            img: "assets/img/paquetes/pkg-universo.png",       p1: 500000, p2: 750000 },
+  { name: "Bono Del Cielo · Zonas Húmedas", img: "assets/img/paquetes/pkg-bono-humedas.png", p1: 350000, p2: 450000 },
+  { name: "Sauna · 6 Sesiones",      img: "assets/img/paquetes/pkg-sauna.png",          solo: 420000 },
 ];
 
 function buildPackageCard(pkg) {
   const waUrl = buildWaUrl(waMessageFor("Paquete " + pkg.name));
   const badge = pkg.featured ? `<span class="pc-badge">Recomendado</span>` : "";
+  const prices = pkg.solo
+    ? `<div class="pc-prices solo"><div class="pc-price"><span class="pc-plabel">Individual</span><span class="pc-pval">${formatCOP(pkg.solo)}</span></div></div>`
+    : `<div class="pc-prices"><div class="pc-price"><span class="pc-plabel">1 persona</span><span class="pc-pval">${formatCOP(pkg.p1)}</span></div><span class="pc-pdiv" aria-hidden="true"></span><div class="pc-price"><span class="pc-plabel">2 personas</span><span class="pc-pval">${formatCOP(pkg.p2)}</span></div></div>`;
 
   return `<article class="pkg-card2${pkg.featured ? " is-featured" : ""}" role="listitem">
     <div class="pc-flyer">
       ${badge}
       <img src="${pkg.img}" alt="Paquete ${pkg.name} — Del Cielo Spa & Estética" loading="lazy" />
     </div>
-    <a href="${waUrl}" class="btn btn-primary pc-btn" target="_blank" rel="noopener noreferrer" aria-label="Reservar ${pkg.name} por WhatsApp">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-      Reservar
-    </a>
+    <div class="pc-foot">
+      <h3 class="pc-name">${pkg.name}</h3>
+      ${prices}
+      <a href="${waUrl}" class="btn btn-primary pc-btn" target="_blank" rel="noopener noreferrer" aria-label="Reservar ${pkg.name} por WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        Reservar
+      </a>
+    </div>
   </article>`;
 }
 
