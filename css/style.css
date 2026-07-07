@@ -621,7 +621,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: relative;
   border: 1px solid var(--dorado-claro);
 }
-.zona-frame img {
+.zona-frame img,
+.zona-frame .zona-video {
   width: 100%; height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
@@ -858,49 +859,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-direction: column;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(200,165,106,0.28);
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   transition: border-color var(--trans), transform var(--trans), box-shadow var(--trans);
 }
 .pkg-card2:hover { border-color: var(--dorado); transform: translateY(-4px); box-shadow: 0 24px 50px rgba(0,0,0,0.35); }
 .pkg-card2.is-featured { border-color: var(--dorado); box-shadow: 0 0 0 1px var(--dorado); }
 
-.pc-media {
-  position: relative;
-  aspect-ratio: 16/9;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
+/* Flyer image (autocontenido: nombre, incluye y precio ya impresos) */
+.pc-flyer { position: relative; overflow: hidden; background: #f3e9f2; }
+.pc-flyer img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
 }
-.pc-media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.18), transparent 60%);
-}
-.pc-ico {
-  font-size: 3rem;
-  color: rgba(255,255,255,0.92);
-  text-shadow: 0 4px 20px rgba(0,0,0,0.35);
-  z-index: 1;
-}
-.pc-media-star { position: absolute; color: rgba(255,255,255,0.55); font-size: 0.7rem; animation: pcTwinkle 3s ease-in-out infinite; }
-.pc-media-star.a { top: 22%; left: 18%; }
-.pc-media-star.b { bottom: 26%; right: 22%; animation-delay: 1.2s; }
-@keyframes pcTwinkle { 0%,100%{ opacity: 0.3; transform: scale(0.8);} 50%{ opacity: 0.9; transform: scale(1.15);} }
-.pc-photo-soon {
-  position: absolute;
-  bottom: 0.6rem; right: 0.7rem;
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  background: rgba(0,0,0,0.25);
-  padding: 0.2rem 0.5rem;
-  border-radius: 20px;
-  z-index: 2;
-}
+.pkg-card2:hover .pc-flyer img { transform: scale(1.03); }
 .pc-badge {
   position: absolute;
   top: 0.8rem; left: 0.8rem;
@@ -910,36 +884,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   text-transform: uppercase;
   color: var(--azul-marino);
   background: var(--dorado);
-  padding: 0.3rem 0.7rem;
+  padding: 0.32rem 0.75rem;
   border-radius: 20px;
   z-index: 2;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
 }
-
-.pc-body { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.3rem 1.4rem 1.5rem; flex: 1; }
-.pc-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: #fff; line-height: 1.1; }
-.pc-lema { font-size: 0.8rem; font-style: italic; color: var(--dorado-claro); }
-.pc-dur {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  font-size: 0.75rem; color: rgba(255,255,255,0.6); margin: 0.1rem 0 0.3rem;
+@keyframes pcTwinkle { 0%,100%{ opacity: 0.3; transform: scale(0.8);} 50%{ opacity: 0.9; transform: scale(1.15);} }
+.pc-btn {
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.85rem;
+  background: #25D366;
+  border-color: #25D366;
+  color: #fff;
+  font-weight: 700;
 }
-.pc-dur svg { color: var(--dorado); }
-.pc-list { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.4rem; flex: 1; }
-.pc-list li { font-size: 0.84rem; color: rgba(255,255,255,0.75); padding-left: 1rem; position: relative; line-height: 1.45; }
-.pc-list li::before { content: '✦'; position: absolute; left: 0; color: var(--dorado); font-size: 0.6rem; top: 0.15rem; }
-.pc-prices {
-  display: flex;
-  gap: 0.8rem;
-  padding: 0.9rem 0 0.3rem;
-  border-top: 1px solid rgba(200,165,106,0.22);
-  margin-top: auto;
-}
-.pc-prices.solo { justify-content: flex-start; }
-.pc-price { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
-.pc-prices.solo .pc-price { flex: 0 0 auto; }
-.pc-plabel { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-.pc-pval { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--dorado-claro); }
-.pc-btn { justify-content: center; margin-top: 0.9rem; background: var(--dorado); border-color: var(--dorado); color: var(--azul-marino); font-weight: 700; }
-.pc-btn:hover { background: var(--dorado-claro); border-color: var(--dorado-claro); }
+.pc-btn:hover { background: #1eb257; border-color: #1eb257; transform: translateY(-1px); }
+.pc-btn svg { flex-shrink: 0; }
 
 .pkg-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.5rem; }
 .pkg-dot {
@@ -1253,44 +1214,14 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
 .testi-card cite small { font-size: 0.65rem; color: rgba(255,255,255,0.4); font-weight: 400; }
 
 /* ── Section Blend Transitions ──────────────────────────────── */
-/* Gradient fades at the bottom of each section to dissolve into the next */
+/* Solo fundidos suaves al PIE de cada sección hacia el color de la
+   siguiente. Sin overlays superiores (::before) para evitar franjas. */
 .sec-servicios,
 .sec-paquetes,
 .sec-reserva,
-.sec-testimonios,
 .sec-ubicacion,
 .sec-bienvenida {
   overflow: hidden;
-}
-.sec-servicios::after { /* white → cielo-claro (→ reserva) */
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 5rem;
-  background: linear-gradient(to bottom, transparent, var(--cielo-claro));
-  pointer-events: none;
-}
-.sec-paquetes::after { /* noche → noche (→ testimonios, mismo tono) */
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 4rem;
-  background: linear-gradient(to bottom, transparent, var(--noche));
-  pointer-events: none;
-}
-.sec-reserva::after { /* cielo-claro → navy (→ testimonios) */
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 5rem;
-  background: linear-gradient(to bottom, transparent, var(--azul-marino));
-  pointer-events: none;
-}
-.sec-testimonios::after { /* navy → white (→ ubicacion) */
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 5rem;
-  background: linear-gradient(to bottom, transparent, var(--blanco));
-  pointer-events: none;
-}
-.sec-ubicacion::after { /* white → cielo-claro (→ faq) */
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-  height: 4rem;
-  background: linear-gradient(to bottom, transparent, var(--cielo-claro));
-  pointer-events: none;
 }
 .sec-bienvenida::after { /* white → cielo-claro (→ historia) */
   content: ''; position: absolute; bottom: 0; left: 0; right: 0;
@@ -1298,17 +1229,28 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
   background: linear-gradient(to bottom, transparent, var(--cielo-claro));
   pointer-events: none;
 }
-/* Also blend INTO dark sections from the top */
-.sec-paquetes::before { /* cielo-claro → transparent at top, entering from reserva */
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 4rem;
-  background: linear-gradient(to bottom, var(--cielo-claro), transparent);
+.sec-servicios::after { /* white → cielo-claro (→ reserva) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom, transparent, var(--cielo-claro));
   pointer-events: none;
 }
-.sec-testimonios::before { /* noche → transparent at top (viene de paquetes) */
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
+.sec-reserva::after { /* cielo-claro → navy (→ paquetes) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 6rem;
+  background: linear-gradient(to bottom, transparent, var(--azul-marino));
+  pointer-events: none;
+}
+.sec-paquetes::after { /* noche → white (→ ubicacion) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 6rem;
+  background: linear-gradient(to bottom, transparent, var(--blanco));
+  pointer-events: none;
+}
+.sec-ubicacion::after { /* white → cielo-claro (→ cta final) */
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
   height: 4rem;
-  background: linear-gradient(to bottom, var(--noche), transparent);
+  background: linear-gradient(to bottom, transparent, var(--cielo-claro));
   pointer-events: none;
 }
 
@@ -1711,14 +1653,11 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
   .container { padding: 0 1.25rem; }
 
   /* Tighten blend gradient heights on mobile */
-  .sec-servicios::after,
-  .sec-paquetes::after,
+  .sec-servicios::after { height: 1.5rem; }
   .sec-reserva::after,
-  .sec-testimonios::after { height: 1.5rem; }
+  .sec-paquetes::after { height: 3rem; }
   .sec-ubicacion::after { height: 1.25rem; }
   .sec-bienvenida::after { height: 1.25rem; }
-  .sec-paquetes::before,
-  .sec-testimonios::before { height: 1.5rem; }
 
   /* Section-level heading/label spacing — tighter on mobile */
   .label { margin-bottom: 0.5rem; }
@@ -1885,13 +1824,10 @@ select.fc { appearance: none; padding-right: 1.5rem; cursor: pointer; }
   .section { padding: clamp(1.25rem, 3.5vw, 2rem) 0; }
 
   /* Blend gradient heights — smallest phones */
-  .sec-servicios::after,
-  .sec-paquetes::after,
+  .sec-servicios::after { height: 1.25rem; }
   .sec-reserva::after,
-  .sec-testimonios::after { height: 1.25rem; }
+  .sec-paquetes::after { height: 2.5rem; }
   .sec-ubicacion::after { height: 1rem; }
-  .sec-paquetes::before,
-  .sec-testimonios::before { height: 1.25rem; }
 
   /* Hero */
   .hero-title { font-size: clamp(3.2rem, 16vw, 5rem); }

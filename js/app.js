@@ -555,55 +555,30 @@ function initServices() {
   });
 }
 
-/* ── Packages (horizontal carousel) ─────────────────────────── */
+/* ── Packages (horizontal carousel de flyers) ───────────────── */
 const PACKAGES_DATA = [
-  { name: "Entre Estrellas",   lema: "Porque juntas brillamos más",      dur: "2h 30min", grad: "linear-gradient(150deg,#4A7BA6,#1C3D5A)",  ico: "✦",
-    incl: ["Cóctel de bienvenida","Yoga facial","Jelly spa de manos","Aromaterapia & Musicoterapia","Sauna o baño turco"],
-    p1: 330000, p2: 500000 },
-  { name: "Entre Nubes de Algodón", lema: "El ritual estrella",         dur: "2h 50min", grad: "linear-gradient(150deg,#8a6fa8,#4A7BA6)",  ico: "☁", featured: true,
-    incl: ["Cóctel & pasabocas","Exfoliación y envoltura corporal","Baño turco + Jacuzzi","Masaje con piedras calientes","Velo facial + decoración"],
-    p1: 550000, p2: 850000 },
-  { name: "Constelaciones",    lema: "Un cielo de sensaciones",          dur: "3 horas",  grad: "linear-gradient(150deg,#2d5f82,#0e2a3f)",  ico: "✧",
-    incl: ["Aromaterapia & Musicoterapia","Spa de manos","Masaje capilar","Sauna turco","Masaje localizado","Bebida del cielo"],
-    p1: 400000, p2: 650000 },
-  { name: "Del Cielo",         lema: "Nuestra firma",                    dur: "3 horas",  grad: "linear-gradient(150deg,#C8A56A,#8a6f3f)",  ico: "☾",
-    incl: ["Cóctel de bienvenida","Pedispa","Yoga facial","Envoltura corporal","Jacuzzi","Pasabocas"],
-    p1: 470000, p2: 750000 },
-  { name: "Del Universo",      lema: "Cuerpo, mente y espíritu",         dur: "3 horas",  grad: "linear-gradient(150deg,#3b4a7a,#1C3D5A)",  ico: "✵",
-    incl: ["Aromaterapia & Musicoterapia","Hidratación facial","Reflexología podal y palmar","Sauna + Jacuzzi","Bebida del cielo"],
-    p1: 500000, p2: 750000 },
-  { name: "Bono Del Cielo",    lema: "Zonas húmedas",                    dur: "Zonas húmedas", grad: "linear-gradient(150deg,#4A7BA6,#2d5f82)", ico: "❋",
-    incl: ["Baño húmedo turco","Sauna","Jacuzzi","Bebida del cielo"],
-    p1: 350000, p2: 450000 },
-  { name: "Sauna · 6 Sesiones", lema: "Un ritual semanal",              dur: "6 sesiones", grad: "linear-gradient(150deg,#6b7f5a,#3f4a3a)", ico: "♨",
-    incl: ["6 sesiones · 1 por semana","Bebida energizante en cada sesión"],
-    solo: 420000 },
+  { name: "Entre Estrellas",         img: "assets/img/paquetes/pkg-estrellas.png" },
+  { name: "Entre Nubes de Algodón",  img: "assets/img/paquetes/pkg-nubes.png", featured: true },
+  { name: "Constelaciones",          img: "assets/img/paquetes/pkg-constelaciones.png" },
+  { name: "Del Cielo",               img: "assets/img/paquetes/pkg-del-cielo.png" },
+  { name: "Del Universo",            img: "assets/img/paquetes/pkg-universo.png" },
+  { name: "Bono Del Cielo · Zonas Húmedas", img: "assets/img/paquetes/pkg-bono-humedas.png" },
+  { name: "Sauna · 6 Sesiones",      img: "assets/img/paquetes/pkg-sauna.png" },
 ];
 
 function buildPackageCard(pkg) {
   const waUrl = buildWaUrl(waMessageFor("Paquete " + pkg.name));
   const badge = pkg.featured ? `<span class="pc-badge">Recomendado</span>` : "";
-  const incl = pkg.incl.map(x => `<li>${x}</li>`).join("");
-  const prices = pkg.solo
-    ? `<div class="pc-prices solo"><div class="pc-price"><span class="pc-plabel">Individual</span><span class="pc-pval">${formatCOP(pkg.solo)}</span></div></div>`
-    : `<div class="pc-prices"><div class="pc-price"><span class="pc-plabel">1 persona</span><span class="pc-pval">${formatCOP(pkg.p1)}</span></div><div class="pc-price"><span class="pc-plabel">2 personas</span><span class="pc-pval">${formatCOP(pkg.p2)}</span></div></div>`;
 
   return `<article class="pkg-card2${pkg.featured ? " is-featured" : ""}" role="listitem">
-    <div class="pc-media" style="background:${pkg.grad}">
+    <div class="pc-flyer">
       ${badge}
-      <span class="pc-ico" aria-hidden="true">${pkg.ico}</span>
-      <span class="pc-media-star a" aria-hidden="true">✦</span>
-      <span class="pc-media-star b" aria-hidden="true">✦</span>
-      <span class="pc-photo-soon">Foto próximamente</span>
+      <img src="${pkg.img}" alt="Paquete ${pkg.name} — Del Cielo Spa & Estética" loading="lazy" />
     </div>
-    <div class="pc-body">
-      <h3 class="pc-name">${pkg.name}</h3>
-      <p class="pc-lema">${pkg.lema}</p>
-      <p class="pc-dur"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1"/><path d="M8 4.5V8L10.5 9.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg> ${pkg.dur}</p>
-      <ul class="pc-list">${incl}</ul>
-      ${prices}
-      <a href="${waUrl}" class="btn btn-primary btn-sm pc-btn" target="_blank" rel="noopener noreferrer">Reservar</a>
-    </div>
+    <a href="${waUrl}" class="btn btn-primary pc-btn" target="_blank" rel="noopener noreferrer" aria-label="Reservar ${pkg.name} por WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+      Reservar
+    </a>
   </article>`;
 }
 
