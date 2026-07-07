@@ -611,7 +611,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .zona-row.rl .zona-text  { order: 1; padding: clamp(2rem, 5vw, 5rem) clamp(2rem, 5vw, 5rem); }
 
 /* Alternate background for odd zones */
-.zona-row[data-zona="2"], .zona-row[data-zona="4"], .zona-row[data-zona="6"] { background: var(--cielo-claro); }
+.zona-row[data-zona="2"], .zona-row[data-zona="4"], .zona-row[data-zona="6"], .zona-row[data-zona="8"] { background: var(--cielo-claro); }
 
 .zona-frame {
   width: 100%;
